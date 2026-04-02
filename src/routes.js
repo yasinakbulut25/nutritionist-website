@@ -1,18 +1,23 @@
+import { Home, User, Briefcase, BookOpen, Utensils, Mail } from "lucide-react";
+
 export const routes = [
   {
     text: "Ana Sayfa",
     href: "/",
     type: "link",
+    icon: Home,
   },
   {
     text: "Hakkımda",
     href: "/hakkimda",
     type: "link",
+    icon: User,
   },
   {
     text: "Hizmetler",
     href: "/hizmetler",
     type: "dropdown",
+    icon: Briefcase,
     submenu: [
       {
         text: "Beslenme Danışmanlığı",
@@ -40,11 +45,13 @@ export const routes = [
     text: "Blog",
     href: "/blog",
     type: "link",
+    icon: BookOpen,
   },
   {
     text: "Tarifler",
     href: "/tarifler",
     type: "dropdown",
+    icon: Utensils,
     submenu: [
       {
         text: "Kahvaltı Tarifleri",
@@ -72,5 +79,6 @@ export const routes = [
     text: "İletişim",
     href: "/iletisim",
     type: "link",
+    icon: Mail,
   },
 ];
