@@ -1,17 +1,62 @@
-import { Home, User, Briefcase, BookOpen, Utensils, Mail } from "lucide-react";
+import {
+  User,
+  Briefcase,
+  Mail,
+  Video,
+  Salad,
+  ScanHeart,
+  UtensilsCrossed,
+  Search,
+  CircleQuestionMark,
+  MessageCircleMore,
+} from "lucide-react";
 
 export const routes = [
-  {
-    text: "Ana Sayfa",
-    href: "/",
-    type: "link",
-    icon: Home,
-  },
   {
     text: "Hakkımda",
     href: "/hakkimda",
     type: "link",
     icon: User,
+  },
+  {
+    text: "Eğitim Videoları",
+    href: "https://egitim.diyetisyengizemakbulut.com/",
+    type: "link",
+    icon: Video,
+  },
+  {
+    text: "Online Diyet",
+    href: "/online-diyet",
+    type: "link",
+    icon: ScanHeart,
+  },
+  {
+    text: "Yazılarım",
+    href: "/yazilarim",
+    type: "dropdown",
+    icon: Briefcase,
+    submenu: [
+      {
+        text: "Beslenme",
+        href: "/hizmetler/beslenme-danismanligi",
+        icon: Salad,
+      },
+      {
+        text: "Tarifler",
+        href: "/hizmetler/diyet-programlari",
+        icon: UtensilsCrossed,
+      },
+      {
+        text: "Araştırma",
+        href: "/hizmetler/spor-beslenmesi",
+        icon: Search,
+      },
+      {
+        text: "Nedir",
+        href: "/hizmetler/online-danismanlik",
+        icon: CircleQuestionMark,
+      },
+    ],
   },
   {
     text: "Hizmetler",
@@ -42,38 +87,16 @@ export const routes = [
     ],
   },
   {
-    text: "Blog",
-    href: "/blog",
+    text: "Görüşler",
+    href: "/görüsler",
     type: "link",
-    icon: BookOpen,
+    icon: MessageCircleMore,
   },
   {
-    text: "Tarifler",
-    href: "/tarifler",
-    type: "dropdown",
-    icon: Utensils,
-    submenu: [
-      {
-        text: "Kahvaltı Tarifleri",
-        href: "/tarifler/kahvalti",
-        description: "Sağlıklı kahvaltı fikirleri",
-      },
-      {
-        text: "Ana Yemek",
-        href: "/tarifler/ana-yemek",
-        description: "Fit ana yemek tarifleri",
-      },
-      {
-        text: "Tatlılar",
-        href: "/tarifler/tatlilar",
-        description: "Şekersiz ve sağlıklı tatlılar",
-      },
-      {
-        text: "Atıştırmalıklar",
-        href: "/tarifler/atistirmaliklar",
-        description: "Pratik atıştırmalık önerileri",
-      },
-    ],
+    text: "S.S.S",
+    href: "/sikca-sorulan-sorular",
+    type: "link",
+    icon: Mail,
   },
   {
     text: "İletişim",
