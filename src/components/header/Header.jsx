@@ -20,7 +20,7 @@ function Header() {
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 1 }}
       >
-        <div className="relative max-w-6xl w-full flex items-center justify-between mx-auto bg-white/90 dark:bg-slate-900/90 backdrop-blur-md sm:px-6 px-2 pr-3 py-4 rounded-2xl shadow-lg">
+        <div className="relative max-w-7xl w-full flex items-center justify-between mx-auto bg-white/90 dark:bg-slate-900/90 backdrop-blur-md sm:px-6 px-2 pr-3 py-4 rounded-2xl shadow-lg">
           <div className="flex items-center sm:gap-4 gap-2">
             <MobileMenu />
             <Link
