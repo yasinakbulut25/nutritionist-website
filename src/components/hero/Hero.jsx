@@ -135,7 +135,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="relative"
           >
-            <div className="bg-white w-[400px] h-[400px] flex items-center justify-center pt-5 rounded-full overflow-hidden">
+            <div className="bg-white w-[400px] h-[400px] flex items-center justify-center pt-5 border-5 border-violet-300 rounded-full overflow-hidden">
               <Image
                 src="/profile.png"
                 width={300}
