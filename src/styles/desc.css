@@ -1,0 +1,26 @@
+.online-diet-desc p {
+  color: #161616;
+}
+
+.online-diet-desc ul li,
+.online-diet-desc ol li {
+  list-style: none;
+  color: #161616;
+  line-height: 1.8;
+}
+
+.online-diet-desc ul li:before,
+.online-diet-desc ol li:before {
+  content: "☆";
+  color: #6d28d9;
+  padding: 0 6px 0 0;
+}
+
+.online-diet-desc img {
+  object-fit: contain;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 500px;
+}

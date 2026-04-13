@@ -1,8 +1,11 @@
 import { OnlineDiyetService } from "@/services/onlineDiyet.service";
 import DOMPurify from "isomorphic-dompurify";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import Container from "../Container";
 import Title from "../Title";
+import ButtonPrimary from "../buttons/ButtonPrimary";
 
 async function OnlineDiyet() {
   const data = await OnlineDiyetService.getShortData();
@@ -15,11 +18,18 @@ async function OnlineDiyet() {
         <div>
           <Title>Online Diyet</Title>
           <div
-            className="mt-4 flex flex-col gap-2"
+            className="online-diet-desc flex flex-col gap-2 mb-4"
             dangerouslySetInnerHTML={{
               __html: DOMPurify.sanitize(data.icerik),
             }}
           />
+          <ButtonPrimary
+            as={Link}
+            href="/online-diyet"
+            endContent={<ArrowRight width={16} height={16} />}
+          >
+            Detaylı İncele
+          </ButtonPrimary>
         </div>
         <div className="bg-wnpm install dompurifyhite dark:bg-slate-900 relative p-0 m-auto rounded-xl border border-slate-200 dark:border-slate-700 max-w-full">
           <Image
