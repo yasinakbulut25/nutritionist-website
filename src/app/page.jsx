@@ -1,4 +1,5 @@
 import Hero from "@/components/hero/Hero";
+import OnlineDiyet from "@/components/home/OnlineDiyet";
 import IntroBox from "@/components/intro/IntroBox";
 import Link from "next/link";
 
@@ -16,6 +17,7 @@ export default function Home() {
             href: "https://egitim.diyetisyengizemakbulut.com/",
           }}
         />
+        <OnlineDiyet />
       </div>
     </main>
   );
