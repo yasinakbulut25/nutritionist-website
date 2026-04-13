@@ -1,3 +1,1 @@
-export const endpoints = {
-  onlineDiyet: "/api/online-diyet",
-};
+export const endpoints = {};
