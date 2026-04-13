@@ -1,6 +1,7 @@
 import { OnlineDiyetService } from "@/services/onlineDiyet.service";
 import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";
+import Container from "../Container";
 
 async function OnlineDiyet() {
   const data = await OnlineDiyetService.getShortData();
@@ -8,7 +9,7 @@ async function OnlineDiyet() {
   if (!data) return;
 
   return (
-    <section className="sm:py-20 py-10">
+    <Container>
       <div className="grid gap-10 lg:grid-cols-2">
         <div>
           <h2 className="lg:text-5xl md:text-4xl text-2xl font-semibold text-black dark:text-white text-left text-pretty mb-4">
@@ -31,7 +32,7 @@ async function OnlineDiyet() {
           />
         </div>
       </div>
-    </section>
+    </Container>
   );
 }
 
