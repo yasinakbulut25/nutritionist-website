@@ -1,4 +1,5 @@
 import { OnlineDiyetService } from "@/services/onlineDiyet.service";
+import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";
 
 async function OnlineDiyet() {
@@ -15,7 +16,9 @@ async function OnlineDiyet() {
           </h2>
           <div
             className="mt-4 flex flex-col gap-2"
-            dangerouslySetInnerHTML={{ __html: data.icerik }}
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(data.icerik),
+            }}
           />
         </div>
         <div className="bg-wnpm install dompurifyhite dark:bg-slate-900 relative p-0 m-auto rounded-xl border border-slate-200 dark:border-slate-700 max-w-full">
