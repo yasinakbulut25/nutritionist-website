@@ -1,5 +1,6 @@
 import Container from "../Container";
 import { MessageSquare, ClipboardList, TrendingUp, Target } from "lucide-react";
+import TitleWithDesc from "../TitleWithDesc";
 
 const steps = [
   {
@@ -43,18 +44,11 @@ const steps = [
 function HowWeWork() {
   return (
     <Container>
-      {/* Section Header */}
-      <div className="text-center mb-12 md:mb-16">
-        <span className="text-violet-600 font-semibold text-sm uppercase tracking-wider mb-4 block">
-          Nasıl Çalışıyoruz?
-        </span>
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
-          4 Adımda Hedefinize Ulaşın
-        </h2>
-        <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-          Basit ve etkili sürecimizle sağlıklı yaşam yolculuğunuza başlayın
-        </p>
-      </div>
+      <TitleWithDesc
+        title="4 Adımda Hedefinize Ulaşın"
+        subTitle="Nasıl Çalışıyoruz?"
+        desc="Basit ve etkili sürecimizle sağlıklı yaşam yolculuğunuza başlayın"
+      />
 
       <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-6 lg:gap-4">
         {steps.map((step) => {
