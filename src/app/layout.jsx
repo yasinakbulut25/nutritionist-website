@@ -17,7 +17,10 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="tr">
-      <body className={`${outfit.className} antialiased min-h-dvh bg-slate-50`}>
+      <body
+        className={`${outfit.className} antialiased min-h-dvh bg-slate-50`}
+        suppressHydrationWarning
+      >
         <ClientProvider>
           <Header />
           {children}

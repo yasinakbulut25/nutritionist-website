@@ -7,7 +7,7 @@ const steps = [
     id: 1,
     title: "İlk İletişim",
     description:
-      "WhatsApp veya e-posta üzerinden ulaşın. Sağlık durumunuzu, hedeflerinizi ve alışkanlıklarınızı konuşalım.",
+      "WhatsApp üzerinden ulaşarak sağlık durumunuzu, hedeflerinizi ve alışkanlıklarınızı konuşalım.",
     icon: MessageSquare,
     bgColor: "bg-green-100",
     iconColor: "text-green-600",
@@ -25,7 +25,7 @@ const steps = [
     id: 3,
     title: "Haftalık Takip",
     description:
-      "Her hafta programınız güncellenir. WhatsApp üzerinden sürekli iletişimde kalarak sizi destekliyorum.",
+      "Her hafta programınız güncellenir. Sürekli iletişimde kalarak sizi destekliyorum.",
     icon: TrendingUp,
     bgColor: "bg-orange-100",
     iconColor: "text-orange-600",

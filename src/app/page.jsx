@@ -2,6 +2,7 @@ import Container from "@/components/Container";
 import Hero from "@/components/hero/Hero";
 import HowWeWork from "@/components/home/HowWeWork";
 import OnlineDiyet from "@/components/home/OnlineDiyet";
+import Packages from "@/components/home/Packages";
 import IntroBox from "@/components/intro/IntroBox";
 import Link from "next/link";
 
@@ -22,6 +23,7 @@ export default function Home() {
       </Container>
       <OnlineDiyet />
       <HowWeWork />
+      <Packages />
     </main>
   );
 }
