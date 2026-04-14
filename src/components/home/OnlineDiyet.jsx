@@ -31,13 +31,13 @@ async function OnlineDiyet() {
             Detaylı İncele
           </ButtonPrimary>
         </div>
-        <div className="bg-wnpm install dompurifyhite dark:bg-slate-900 relative p-0 m-auto rounded-xl border border-slate-200 dark:border-slate-700 max-w-full">
+        <div className="bg-white relative p-0 m-auto rounded-xl max-w-full overflow-hidden">
           <Image
-            className="sm:max-w-[500px] max-w-full h-auto mx-auto"
-            src="/profile.png"
+            className="sm:max-w-[400px] max-w-full h-auto mx-auto"
+            src="/images/online-diyet.svg"
             alt="Online Diyet"
-            width={500}
-            height={500}
+            width={400}
+            height={400}
           />
         </div>
       </div>
