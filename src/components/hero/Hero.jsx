@@ -61,7 +61,7 @@ export default function Hero() {
         className="z-0 h-[50px] w-full absolute bottom-0 left-0 blur-3xl bg-gradient-to-t from-violet-300 via-violet-200 to-slate-50 dark:from-violet-900 dark:via-violet-800 dark:to-violet-900"
       />
 
-      <div className="relative max-w-7xl mx-auto pt-28 pb-16 lg:grid flex flex-col lg:grid-cols-2 gap-12 lg:gap-6 items-center w-full z-20">
+      <div className="relative max-w-7xl mx-auto px-4 pt-28 pb-16 lg:grid flex flex-col lg:grid-cols-2 gap-12 lg:gap-6 items-center w-full z-20">
         <div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
