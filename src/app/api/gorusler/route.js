@@ -1,8 +1,8 @@
-import { OnlineDiyetService } from "@/services/onlineDiyet.service";
 import { withErrorHandler } from "@/lib/api/handler";
+import { CommentsService } from "@/services/comments.service";
 
 export const GET = withErrorHandler(async () => {
-  const data = await OnlineDiyetService.getAll();
+  const data = await CommentsService.getAll();
 
   return Response.json({
     success: true,

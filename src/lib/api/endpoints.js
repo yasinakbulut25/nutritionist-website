@@ -1,1 +1,3 @@
-export const endpoints = {};
+export const endpoints = {
+  comments: "/api/gorusler",
+};

@@ -3,6 +3,7 @@ import Hero from "@/components/hero/Hero";
 import HowWeWork from "@/components/home/HowWeWork";
 import OnlineDiyet from "@/components/home/OnlineDiyet";
 import Packages from "@/components/home/Packages";
+import Testimonials from "@/components/home/Testimonials";
 import IntroBox from "@/components/intro/IntroBox";
 import Link from "next/link";
 
@@ -24,6 +25,7 @@ export default function Home() {
       <OnlineDiyet />
       <HowWeWork />
       <Packages />
+      <Testimonials />
     </main>
   );
 }

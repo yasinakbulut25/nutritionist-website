@@ -66,7 +66,7 @@ async function Packages() {
               return (
                 <div
                   key={pkg.id}
-                  className={`relative rounded-2xl border-2 ${packageStyle.borderColor} overflow-hidden transition-all duration-300 hover:shadow-sm hover:-translate-y-2`}
+                  className={`relative max-w-[400px] mx-auto rounded-2xl border-2 ${packageStyle.borderColor} overflow-hidden transition-all duration-300 hover:shadow-sm hover:-translate-y-2`}
                 >
                   <div
                     className={`bg-gradient-to-b ${packageStyle.bgGradient} p-8`}
