@@ -9,4 +9,15 @@ export const CommentsRepo = {
     );
     return rows;
   },
+
+  create: async ({ ekleyen, sehir, icerik }) => {
+    const db = getDB();
+    const tarih = new Date().toISOString().slice(0, 10);
+
+    const [result] = await db.query(
+      "INSERT INTO gorusler (ekleyen, icerik, sehir, tarih, onay) VALUES (?, ?, ?, ?, 1)",
+      [ekleyen, icerik, sehir, tarih],
+    );
+    return result.insertId;
+  },
 };
