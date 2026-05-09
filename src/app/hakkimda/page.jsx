@@ -70,10 +70,10 @@ export default async function HakkimdaPage() {
   return (
     <main className="bg-slate-50 min-h-screen">
       <div className="relative overflow-hidden bg-gradient-to-br from-violet-50 via-white to-slate-50 border-b border-slate-100">
-        <div className="pointer-events-none absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full blur-3xl bg-violet-200/40" />
-        <div className="pointer-events-none absolute -bottom-24 right-0 w-96 h-96 rounded-full blur-3xl bg-violet-100/60" />
+        <div className="pointer-events-none absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full blur-3xl bg-violet-200/40 z-10" />
+        <div className="pointer-events-none absolute -bottom-24 right-0 w-96 h-96 rounded-full blur-3xl bg-violet-100/60 z-10" />
 
-        <Container className="!pb-20 !pt-40">
+        <Container className="!pb-20 !pt-40 relative z-20">
           <div className="relative flex flex-col md:flex-row items-center gap-10">
             <div className="flex-shrink-0">
               <div className="relative w-44 h-44 md:w-56 md:h-56">
