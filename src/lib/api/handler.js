@@ -8,7 +8,7 @@ export function withErrorHandler(handler) {
       return Response.json(
         {
           success: false,
-          message: error.message || "Internal Server Error",
+          message: "Internal Server Error",
         },
         { status: 500 },
       );
