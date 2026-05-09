@@ -12,7 +12,7 @@ import ButtonLight from "../buttons/ButtonLight";
 
 const floatingBadges = [
   {
-    text: "500+ Mutlu Danışan",
+    text: "1000+ Mutlu Danışan",
     icon: "😊",
     delay: 0.8,
     position: "sm:-top-4 sm:left-1/2",

@@ -58,34 +58,34 @@ export const routes = [
       },
     ],
   },
-  {
-    text: "Hizmetler",
-    href: "/hizmetler",
-    type: "dropdown",
-    icon: Briefcase,
-    submenu: [
-      {
-        text: "Beslenme Danışmanlığı",
-        href: "/hizmetler/beslenme-danismanligi",
-        description: "Kişiye özel beslenme programları",
-      },
-      {
-        text: "Diyet Programları",
-        href: "/hizmetler/diyet-programlari",
-        description: "Hedef odaklı diyet planları",
-      },
-      {
-        text: "Spor Beslenmesi",
-        href: "/hizmetler/spor-beslenmesi",
-        description: "Sporcular için özel programlar",
-      },
-      {
-        text: "Online Danışmanlık",
-        href: "/hizmetler/online-danismanlik",
-        description: "Uzaktan beslenme takibi",
-      },
-    ],
-  },
+  // {
+  //   text: "Hizmetler",
+  //   href: "/hizmetler",
+  //   type: "dropdown",
+  //   icon: Briefcase,
+  //   submenu: [
+  //     {
+  //       text: "Beslenme Danışmanlığı",
+  //       href: "/hizmetler/beslenme-danismanligi",
+  //       description: "Kişiye özel beslenme programları",
+  //     },
+  //     {
+  //       text: "Diyet Programları",
+  //       href: "/hizmetler/diyet-programlari",
+  //       description: "Hedef odaklı diyet planları",
+  //     },
+  //     {
+  //       text: "Spor Beslenmesi",
+  //       href: "/hizmetler/spor-beslenmesi",
+  //       description: "Sporcular için özel programlar",
+  //     },
+  //     {
+  //       text: "Online Danışmanlık",
+  //       href: "/hizmetler/online-danismanlik",
+  //       description: "Uzaktan beslenme takibi",
+  //     },
+  //   ],
+  // },
   {
     text: "Görüşler",
     href: "/gorusler",
