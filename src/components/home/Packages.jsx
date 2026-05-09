@@ -49,7 +49,7 @@ async function Packages() {
   if (!data) return;
 
   return (
-    <div className="py-8 bg-white">
+    <div id="paketler" className="py-8 bg-white">
       <Container>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <TitleWithDesc

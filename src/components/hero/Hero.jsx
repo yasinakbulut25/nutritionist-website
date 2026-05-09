@@ -1,9 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2, Leaf } from "lucide-react";
+import { CheckCircle2, Leaf, ChevronDown } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import ButtonWhatsapp from "@/components/buttons/ButtonWhatsapp";
+import { INSTAGRAM_URL } from "@/utils/constants";
+import { Instagram as InstagramIcon } from "react-bootstrap-icons";
+import ButtonPrimary from "../buttons/ButtonPrimary";
+import ButtonLight from "../buttons/ButtonLight";
 
 const floatingBadges = [
   {
@@ -47,7 +52,7 @@ const checkItems = [
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen hero-gradient overflow-hidden flex items-center mb-10">
+    <section className="relative h-screen max-h-[992px] hero-gradient overflow-hidden flex items-center mb-10">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -123,8 +128,24 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
+            className="flex flex-wrap items-center gap-3"
           >
             <ButtonWhatsapp>Hemen Başlayalım</ButtonWhatsapp>
+
+            <ButtonPrimary
+              as={Link}
+              href={INSTAGRAM_URL}
+              target="_blank"
+              aria-label="Instagram"
+            >
+              Takip Edin
+              <InstagramIcon />
+            </ButtonPrimary>
+
+            <ButtonLight as={Link} href="#paketler">
+              Paketleri Gör
+              <ChevronDown className="w-4 h-4" />
+            </ButtonLight>
           </motion.div>
         </div>
 
@@ -145,7 +166,7 @@ export default function Hero() {
             </div>
 
             <div className="flex flex-wrap gap-3 items-center justify-center sm:mt-0 mt-5">
-              {floatingBadges.map((badge, i) => (
+              {floatingBadges.map((badge) => (
                 <motion.div
                   key={badge.text}
                   initial={{ opacity: 0, scale: 0.8, y: 10 }}
