@@ -88,7 +88,7 @@ export const routes = [
   },
   {
     text: "Görüşler",
-    href: "/görüsler",
+    href: "/gorusler",
     type: "link",
     icon: MessageCircleMore,
   },
