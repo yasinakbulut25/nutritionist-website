@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Clock, TrendingUp } from "lucide-react";
 import { BASE_URL } from "@/utils/constants";
+import BlogSearch from "./BlogSearch";
 
 function SidebarBlogItem({ post, rank }) {
   return (
@@ -37,6 +38,10 @@ function SidebarBlogItem({ post, rank }) {
 export default function BlogSidebar({ recentBlogs, popularBlogs }) {
   return (
     <aside className="flex flex-col gap-6 lg:sticky lg:top-28">
+      <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
+        <BlogSearch />
+      </div>
+
       <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
         <div className="flex items-center gap-2 mb-4">
           <div className="w-7 h-7 rounded-lg bg-violet-50 flex items-center justify-center">

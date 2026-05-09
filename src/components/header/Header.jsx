@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { BASE_URL } from "@/utils/constants";
 import { routes } from "@/routes";
@@ -30,7 +30,7 @@ function Header() {
               <Image
                 width={35}
                 height={35}
-                src={"./logo.svg"}
+                src="/logo.svg"
                 alt="Dyt. Gizem Akbulut"
               />
               Dyt. Gizem Akbulut

@@ -89,65 +89,60 @@ export default async function KategoriPage({ params }) {
                 </p>
               </div>
             ) : (
-              <>
-                <p className="text-sm text-slate-400 mb-5 font-medium">
-                  {blogs.length} yazı bulundu
-                </p>
-                <div className="grid sm:grid-cols-2 gap-6">
-                  {blogs.map((post) => (
-                    <article
-                      key={post.id}
-                      className="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-violet-200 hover:shadow-xl transition-all duration-300"
+              <div className="grid sm:grid-cols-2 gap-6">
+                {blogs.map((post) => (
+                  <article
+                    key={post.id}
+                    className="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-violet-200 hover:shadow-xl transition-all duration-300"
+                  >
+                    <Link
+                      href={`/yazilarim/${post.sef}`}
+                      className="block relative overflow-hidden aspect-[16/10]"
                     >
-                      <Link
-                        href={`/yazilarim/${post.sef}`}
-                        className="block relative overflow-hidden aspect-[16/10]"
-                      >
-                        <Image
-                          src={`${BASE_URL}${post.resim}`}
-                          alt={post.baslik}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                        <div className="absolute top-3 left-3">
-                          <span className="px-2.5 py-1 bg-violet-600 text-white text-xs font-semibold rounded-full">
-                            {post.kategori_adi}
-                          </span>
-                        </div>
+                      <Image
+                        src={`${BASE_URL}${post.resim}`}
+                        alt={post.baslik}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute top-3 left-3">
+                        <span className="px-2.5 py-1 bg-violet-600 text-white text-xs font-semibold rounded-full">
+                          {post.kategori_adi}
+                        </span>
+                      </div>
+                    </Link>
+
+                    <div className="p-5">
+                      <Link href={`/yazilarim/${post.sef}`}>
+                        <h2 className="text-base font-bold text-slate-900 mb-2 group-hover:text-violet-600 transition-colors line-clamp-2 leading-snug">
+                          {post.baslik}
+                        </h2>
                       </Link>
 
-                      <div className="p-5">
-                        <Link href={`/yazilarim/${post.sef}`}>
-                          <h2 className="text-base font-bold text-slate-900 mb-2 group-hover:text-violet-600 transition-colors line-clamp-2 leading-snug">
-                            {post.baslik}
-                          </h2>
+                      <div
+                        className="text-slate-500 text-sm leading-relaxed mb-4 line-clamp-2"
+                        dangerouslySetInnerHTML={{
+                          __html: DOMPurify.sanitize(post.icerik),
+                        }}
+                      />
+
+                      <div className="flex items-center justify-between">
+                        <Link
+                          href={`/yazilarim/${post.sef}`}
+                          className="inline-flex items-center gap-1.5 text-violet-600 font-semibold text-sm group-hover:gap-2.5 transition-all duration-200"
+                        >
+                          Devamını Oku
+                          <ArrowRight className="w-4 h-4" />
                         </Link>
-
-                        <div
-                          className="text-slate-500 text-sm leading-relaxed mb-4 line-clamp-2"
-                          dangerouslySetInnerHTML={{
-                            __html: DOMPurify.sanitize(post.icerik),
-                          }}
-                        />
-
-                        <div className="flex items-center justify-between">
-                          <Link
-                            href={`/yazilarim/${post.sef}`}
-                            className="inline-flex items-center gap-1.5 text-violet-600 font-semibold text-sm group-hover:gap-2.5 transition-all duration-200"
-                          >
-                            Devamını Oku
-                            <ArrowRight className="w-4 h-4" />
-                          </Link>
-                          <span className="flex items-center gap-1 text-xs text-slate-400">
-                            <Eye className="w-3.5 h-3.5" />
-                            {post.hit.toLocaleString("tr-TR")}
-                          </span>
-                        </div>
+                        <span className="flex items-center gap-1 text-xs text-slate-400">
+                          <Eye className="w-3.5 h-3.5" />
+                          {post.hit.toLocaleString("tr-TR")}
+                        </span>
                       </div>
-                    </article>
-                  ))}
-                </div>
-              </>
+                    </div>
+                  </article>
+                ))}
+              </div>
             )}
           </div>
 
