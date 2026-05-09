@@ -19,16 +19,16 @@ export const routes = [
     icon: User,
   },
   {
-    text: "Eğitim Videoları",
-    href: "https://egitim.diyetisyengizemakbulut.com/",
-    type: "link",
-    icon: Video,
-  },
-  {
     text: "Online Diyet",
     href: "/online-diyet",
     type: "link",
     icon: ScanHeart,
+  },
+  {
+    text: "Eğitim Videoları",
+    href: "https://egitim.diyetisyengizemakbulut.com/",
+    type: "link",
+    icon: Video,
   },
   {
     text: "Yazılarım",

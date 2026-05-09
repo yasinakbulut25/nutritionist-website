@@ -138,8 +138,8 @@ export default function Hero() {
               target="_blank"
               aria-label="Instagram"
             >
+              <InstagramIcon width={18} height={18} />
               Takip Edin
-              <InstagramIcon />
             </ButtonPrimary>
 
             <ButtonLight as={Link} href="#paketler">

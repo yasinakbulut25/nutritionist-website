@@ -136,16 +136,6 @@ export default async function BlogDetailPage({ params }) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent" />
 
-        <div className="absolute top-6 left-0 right-0 max-w-7xl mx-auto px-4">
-          <Link
-            href={`/kategoriler/${blog.kategori_sef}`}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/20 backdrop-blur-sm border border-white/30 text-white text-sm font-medium hover:bg-white/30 transition-colors duration-200"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            {blog.kategori_adi}
-          </Link>
-        </div>
-
         <div className="absolute bottom-0 left-0 right-0 max-w-7xl mx-auto px-4 pb-8">
           <span className="inline-block mb-3 px-3 py-1 bg-violet-600 text-white text-xs font-semibold rounded-full">
             {blog.kategori_adi}

@@ -1,6 +1,7 @@
 "use client";
 
-import { ChevronRight, Menu, ChevronDown } from "lucide-react";
+import { Menu, ChevronDown } from "lucide-react";
+import { Instagram as InstagramIcon } from "react-bootstrap-icons";
 import {
   Drawer,
   DrawerContent,
@@ -13,10 +14,10 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { routes } from "@/routes";
-import { BASE_URL } from "@/utils/constants";
+import { BASE_URL, INSTAGRAM_URL } from "@/utils/constants";
 import ButtonCustom from "../buttons/ButtonCustom";
 import ButtonPrimary from "../buttons/ButtonPrimary";
-import ButtonLight from "../buttons/ButtonLight";
+import ButtonWhatsapp from "../buttons/ButtonWhatsapp";
 
 function MobileMenu() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -61,7 +62,7 @@ function MobileMenu() {
                   <Image
                     width={35}
                     height={35}
-                    src={"./logo.svg"}
+                    src="/logo.svg"
                     alt="Dyt. Gizem Akbulut Öztürk"
                   />
                   Dyt. Gizem Akbulut Öztürk
@@ -70,7 +71,6 @@ function MobileMenu() {
               <DrawerBody>
                 <div className="flex items-start flex-col gap-2">
                   {routes.map((route, index) => {
-                    // Dropdown tipi
                     if (route.type === "dropdown") {
                       return (
                         <Accordion
@@ -101,7 +101,7 @@ function MobileMenu() {
                             }
                             indicator={<ChevronDown width={16} />}
                           >
-                            <div className="flex flex-col gap-1 ml-6">
+                            <div className="flex flex-col gap-1 ml-4">
                               {route.submenu.map((item, subIndex) => (
                                 <Link
                                   key={subIndex}
@@ -109,8 +109,16 @@ function MobileMenu() {
                                   onClick={onClose}
                                   className="flex flex-col gap-1 py-2 px-3 rounded-lg hover:bg-violet-50 dark:hover:bg-violet-900/20 transition-colors"
                                 >
-                                  <span className="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-violet-600 dark:hover:text-violet-400">
-                                    {item.text}
+                                  <span className="flex items-center gap-2">
+                                    {item.icon && (
+                                      <item.icon
+                                        width={16}
+                                        className="text-violet-500 dark:text-violet-400"
+                                      />
+                                    )}
+                                    <span className="text-sm font-medium text-gray-900 dark:text-white group-hover:text-violet-600 dark:group-hover:text-violet-400">
+                                      {item.text}
+                                    </span>
                                   </span>
                                   {item.description && (
                                     <span className="text-xs text-gray-500 dark:text-gray-400">
@@ -125,7 +133,6 @@ function MobileMenu() {
                       );
                     }
 
-                    // Normal link
                     return (
                       <Link
                         key={index}
@@ -145,18 +152,17 @@ function MobileMenu() {
                   })}
 
                   <div className="flex flex-col gap-4 w-full mt-4 pt-4 border-t border-gray-200 dark:border-slate-700">
+                    <ButtonWhatsapp>Hemen Başlayalım</ButtonWhatsapp>
+
                     <ButtonPrimary
-                      className="w-full"
-                      endContent={<ChevronRight width={14} />}
+                      as={Link}
+                      href={INSTAGRAM_URL}
+                      target="_blank"
+                      aria-label="Instagram"
                     >
-                      Ücretsiz Kayıt Ol
+                      <InstagramIcon width={18} height={18} />
+                      Takip Edin
                     </ButtonPrimary>
-                    <ButtonLight
-                      className="w-full"
-                      endContent={<ChevronRight width={14} />}
-                    >
-                      Giriş Yap
-                    </ButtonLight>
                   </div>
                 </div>
               </DrawerBody>
