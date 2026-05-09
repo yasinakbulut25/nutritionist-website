@@ -32,6 +32,25 @@ export const BlogsRepo = {
     return rows;
   },
 
+  getBySef: async (sef) => {
+    const db = getDB();
+    const [rows] = await db.query(
+      `SELECT y.id, y.baslik, y.icerik, y.tarih, y.resim, y.sef, y.ekleyen, y.hit,
+              k.adi as kategori_adi, k.sef as kategori_sef
+       FROM yazilar y
+       LEFT JOIN kategoriler k ON y.kategori = k.id
+       WHERE y.sef = ? AND y.onay = 1
+       LIMIT 1`,
+      [sef],
+    );
+    return rows[0] || null;
+  },
+
+  incrementHit: async (id) => {
+    const db = getDB();
+    await db.query("UPDATE yazilar SET hit = hit + 1 WHERE id = ?", [id]);
+  },
+
   getRecent: async (limit = 10) => {
     const db = getDB();
     const [rows] = await db.query(

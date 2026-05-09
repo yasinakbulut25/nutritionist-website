@@ -1,0 +1,136 @@
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { ArrowLeft, Calendar, User, Eye, Tag } from "lucide-react";
+import DOMPurify from "isomorphic-dompurify";
+import { BlogService } from "@/services/blogs.service";
+import { BASE_URL } from "@/utils/constants";
+import Container from "@/components/Container";
+import BlogSidebar from "@/components/blogs/BlogSidebar";
+
+export async function generateMetadata({ params }) {
+  const { sef } = await params;
+  try {
+    const { blog } = await BlogService.getBlogDetail(sef);
+    return {
+      title: `${blog.baslik} | Diyetisyen Gizem Akbulut`,
+      description: blog.icerik.replace(/<[^>]+>/g, "").slice(0, 155),
+    };
+  } catch {
+    return { title: "Yazı | Diyetisyen Gizem Akbulut" };
+  }
+}
+
+function formatDate(dateStr) {
+  if (!dateStr) return "";
+  return new Date(dateStr).toLocaleDateString("tr-TR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+}
+
+export default async function BlogDetailPage({ params }) {
+  const { sef } = await params;
+
+  let data;
+  try {
+    data = await BlogService.getBlogDetail(sef);
+  } catch {
+    notFound();
+  }
+
+  const { blog, recentBlogs, popularBlogs } = data;
+
+  return (
+    <main className="bg-slate-50 min-h-screen">
+      <div className="relative w-full h-64 md:h-80 lg:h-96 bg-slate-200 overflow-hidden">
+        <Image
+          src={`${BASE_URL}${blog.resim}`}
+          alt={blog.baslik}
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent" />
+
+        <div className="absolute top-6 left-0 right-0 max-w-7xl mx-auto px-4">
+          <Link
+            href={`/kategoriler/${blog.kategori_sef}`}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/20 backdrop-blur-sm border border-white/30 text-white text-sm font-medium hover:bg-white/30 transition-colors duration-200"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            {blog.kategori_adi}
+          </Link>
+        </div>
+
+        <div className="absolute bottom-0 left-0 right-0 max-w-7xl mx-auto px-4 pb-8">
+          <span className="inline-block mb-3 px-3 py-1 bg-violet-600 text-white text-xs font-semibold rounded-full">
+            {blog.kategori_adi}
+          </span>
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight max-w-3xl">
+            {blog.baslik}
+          </h1>
+        </div>
+      </div>
+
+      <Container>
+        <div className="grid lg:grid-cols-3 gap-8 items-start">
+          <div className="lg:col-span-2">
+            <div className="flex flex-wrap items-center gap-4 py-4 mb-6 border-b border-slate-200">
+              <span className="flex items-center gap-1.5 text-sm text-slate-500">
+                <User className="w-4 h-4 text-violet-400" />
+                {blog.ekleyen}
+              </span>
+              <span className="flex items-center gap-1.5 text-sm text-slate-500">
+                <Calendar className="w-4 h-4 text-violet-400" />
+                {formatDate(blog.tarih)}
+              </span>
+              <span className="flex items-center gap-1.5 text-sm text-slate-500">
+                <Eye className="w-4 h-4 text-violet-400" />
+                {blog.hit.toLocaleString("tr-TR")} görüntülenme
+              </span>
+              <Link
+                href={`/kategoriler/${blog.kategori_sef}`}
+                className="flex items-center gap-1.5 text-sm text-violet-600 font-medium hover:text-violet-800 transition-colors"
+              >
+                <Tag className="w-4 h-4" />
+                {blog.kategori_adi}
+              </Link>
+            </div>
+
+            <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 md:p-10">
+              <div
+                className="online-diet-desc blog-content text-slate-700 leading-relaxed
+                  [&_p]:mb-4 [&_p]:leading-relaxed
+                  [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-slate-900 [&_h2]:mt-8 [&_h2]:mb-3
+                  [&_h3]:text-lg [&_h3]:font-bold [&_h3]:text-slate-800 [&_h3]:mt-6 [&_h3]:mb-2
+                  [&_ul]:my-4 [&_ul]:pl-1 [&_ol]:my-4 [&_ol]:pl-1
+                  [&_li]:py-0.5
+                  [&_strong]:font-semibold [&_strong]:text-slate-900
+                  [&_a]:text-violet-600 [&_a]:underline [&_a]:underline-offset-2 [&_a]:hover:text-violet-800
+                  [&_img]:rounded-xl [&_img]:my-6 [&_img]:mx-auto
+                  [&_blockquote]:border-l-4 [&_blockquote]:border-violet-400 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-slate-600 [&_blockquote]:my-6"
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(blog.icerik),
+                }}
+              />
+            </div>
+
+            <div className="mt-6 flex items-center justify-between flex-wrap gap-3">
+              <Link
+                href={`/kategoriler/${blog.kategori_sef}`}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-violet-200 bg-violet-50 text-violet-700 text-sm font-semibold hover:bg-violet-100 transition-colors duration-200"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                {blog.kategori_adi} yazılarına dön
+              </Link>
+            </div>
+          </div>
+
+          <BlogSidebar recentBlogs={recentBlogs} popularBlogs={popularBlogs} />
+        </div>
+      </Container>
+    </main>
+  );
+}
