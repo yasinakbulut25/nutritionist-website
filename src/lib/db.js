@@ -1,10 +1,11 @@
 import mysql from "mysql2/promise";
 
-let pool;
+// Persist pool on global to survive Next.js HMR module re-evaluation in dev
+const globalWithPool = global;
 
 export function getDB() {
-  if (!pool) {
-    pool = mysql.createPool({
+  if (!globalWithPool._mysqlPool) {
+    globalWithPool._mysqlPool = mysql.createPool({
       host: process.env.DB_HOST,
       user: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
@@ -16,5 +17,5 @@ export function getDB() {
     });
   }
 
-  return pool;
+  return globalWithPool._mysqlPool;
 }

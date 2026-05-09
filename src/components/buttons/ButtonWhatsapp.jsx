@@ -11,6 +11,7 @@ function ButtonWhatsapp({ children, className, ...props }) {
       size="md"
       className={`bg-gradient-to-tr from-green-700 via-green-500 to-green-400 dark:from-green-600 dark:via-green-400 dark:to-green-500 text-white hover:scale-105 min-w-max ${className}`}
       startContent={<Whatsapp width={18} height={18} />}
+      target="_blank"
       as={Link}
       href={WHATSAPP_URL}
       {...props}

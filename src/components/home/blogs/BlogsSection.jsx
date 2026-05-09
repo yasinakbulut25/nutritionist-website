@@ -14,7 +14,7 @@ async function BlogsSection({ categorySef }) {
     <Container>
       <TitleWithDesc
         title={category.adi}
-        subTitle="Yazılılarım"
+        subTitle="Yazılarım"
         desc={category.aciklama}
       />
 

@@ -6,6 +6,7 @@ import Packages from "@/components/home/Packages";
 import Testimonials from "@/components/home/Testimonials";
 import IntroComments from "@/components/home/intros/IntroComments";
 import BlogsSection from "@/components/home/blogs/BlogsSection";
+import Instagram from "@/components/Instagram";
 
 export default function Home() {
   return (
@@ -17,7 +18,11 @@ export default function Home() {
       <Packages />
       <Testimonials />
       <IntroComments />
+      <BlogsSection categorySef="tarifler" />
+      <BlogsSection categorySef="beslenme" />
+      <Instagram />
       <BlogsSection categorySef="arastirma" />
+      <BlogsSection categorySef="nedir" />
     </main>
   );
 }

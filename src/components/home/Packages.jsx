@@ -98,6 +98,7 @@ async function Packages() {
                     <ButtonCustom
                       as={Link}
                       href={WHATSAPP_URL}
+                      target="_blank"
                       className={`w-full py-4 px-6 h-auto rounded-xl font-medium text-base transition-all duration-300 ${packageStyle.buttonStyles}`}
                     >
                       {pkg.link_adi}
