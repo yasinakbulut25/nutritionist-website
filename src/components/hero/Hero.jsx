@@ -97,7 +97,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25 }}
-            className="text-base leading-relaxed mb-8 max-w-lg text-slate-900"
+            className="text-base leading-relaxed text-pretty mb-8 max-w-lg text-slate-900"
           >
             Aç kalmadan, sürdürülebilir bir şekilde kilo verin. Kişiye özel
             online beslenme danışmanlığı ile yaşamınıza uygun, kalıcı sonuçlar
@@ -156,7 +156,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="relative"
           >
-            <div className="bg-white w-[400px] h-[400px] flex items-center justify-center pt-5 border-5 border-violet-300 rounded-full overflow-hidden">
+            <div className="bg-white sm:w-[400px] sm:h-[400px] w-[320px] h-[320px] flex items-center justify-center pt-5 border-5 border-violet-300 rounded-full overflow-hidden">
               <Image
                 src="/profile.png"
                 width={300}

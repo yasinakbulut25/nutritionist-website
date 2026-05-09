@@ -169,8 +169,8 @@ export default async function HakkimdaPage() {
         </div>
       </Container>
 
-      <Container>
-        <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-8 md:p-12">
+      <Container className="xl:!px-4 !px-0">
+        <div className="bg-white xl:rounded-2xl border border-slate-100 shadow-sm sm:p-8 md:p-12 py-6 px-4">
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
             <span className="bg-gradient-to-br from-violet-700 via-violet-400 to-violet-700 bg-clip-text text-transparent">
               {bio.baslik}
@@ -185,8 +185,8 @@ export default async function HakkimdaPage() {
         </div>
       </Container>
 
-      <Container className="!pt-0">
-        <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-8 md:p-12">
+      <Container className="!pt-0 xl:!px-4 !px-0">
+        <div className="bg-white xl:rounded-2xl border border-slate-100 shadow-sm sm:p-8 md:p-12 py-6 px-4">
           <h2 className="text-2xl md:text-3xl font-bold mb-8">
             <span className="bg-gradient-to-br from-violet-700 via-violet-400 to-violet-700 bg-clip-text text-transparent">
               {sertifikalar.baslik}

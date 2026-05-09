@@ -76,7 +76,7 @@ export default async function OnlineDiyetPage() {
         <div className="pointer-events-none absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full blur-3xl bg-violet-200/35 z-10" />
         <div className="pointer-events-none absolute -bottom-20 right-0 w-80 h-80 rounded-full blur-3xl bg-violet-100/50 z-10" />
 
-        <Container className="!pt-36 !pb-16 relative z-40">
+        <Container className="!pt-36 !pb-16 relative z-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="flex flex-col gap-5">
               <span className="text-violet-600 font-semibold text-sm uppercase tracking-widest">
@@ -89,7 +89,7 @@ export default async function OnlineDiyetPage() {
                 </span>{" "}
                 Danışmanlığı
               </h1>
-              <p className="text-slate-600 text-lg leading-relaxed max-w-lg">
+              <p className="text-slate-600 text-lg leading-relaxed  text-balance max-w-lg">
                 Aç kalmadan, sürdürülebilir bir şekilde sağlıklı beslenin.
                 Kişiye özel program ve haftalık WhatsApp desteği ile
                 yanınızdayım.
@@ -150,8 +150,8 @@ export default async function OnlineDiyetPage() {
         </div>
       </Container>
 
-      <Container>
-        <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-8 md:p-12">
+      <Container className="xl:!px-4 !px-0">
+        <div className="bg-white xl:rounded-2xl border border-slate-100 shadow-sm sm:p-8 md:p-12 py-6 px-4">
           <h2 className="text-2xl md:text-3xl font-bold mb-6">
             <span className="bg-gradient-to-br from-violet-700 via-violet-400 to-violet-700 bg-clip-text text-transparent">
               Online Beslenme Danışmanlığı Hakkında

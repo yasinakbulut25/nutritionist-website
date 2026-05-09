@@ -8,19 +8,27 @@ import { BASE_URL } from "@/utils/constants";
 import { buildMeta, SITE_NAME, SITE_URL } from "@/lib/seo";
 import Container from "@/components/Container";
 import BlogSidebar from "@/components/blogs/BlogSidebar";
+import BlogSearch from "@/components/blogs/BlogSearch";
 
 export async function generateMetadata({ params }) {
   const { category } = await params;
   try {
     const { category: cat } = await BlogService.getCategoryPage(category);
-    const desc = cat.aciklama || `${cat.adi} kategorisindeki beslenme ve diyet yazıları. Diyetisyen Gizem Akbulut Öztürk tarafından hazırlanmış içerikler.`;
+    const desc =
+      cat.aciklama ||
+      `${cat.adi} kategorisindeki beslenme ve diyet yazıları. Diyetisyen Gizem Akbulut Öztürk tarafından hazırlanmış içerikler.`;
     return {
       ...buildMeta({
         title: `${cat.adi} | ${SITE_NAME}`,
         description: desc,
         path: `/kategoriler/${category}`,
       }),
-      keywords: [cat.adi, "beslenme yazıları", "diyet blogu", "diyetisyen Gizem Akbulut Öztürk"],
+      keywords: [
+        cat.adi,
+        "beslenme yazıları",
+        "diyet blogu",
+        "diyetisyen Gizem Akbulut Öztürk",
+      ],
     };
   } catch {
     return { title: `Yazılar | ${SITE_NAME}` };
@@ -60,11 +68,11 @@ export default async function KategoriPage({ params }) {
               {cat.adi}
             </h1>
             {cat.aciklama && (
-              <p className="text-slate-500 text-lg leading-relaxed">
+              <p className="text-slate-500 text-lg leading-relaxed text-balance">
                 {cat.aciklama}
               </p>
             )}
-            {/* Category tabs */}
+
             <div className="flex flex-wrap justify-center gap-2 mt-2">
               {allCategories.map((c) => (
                 <Link
@@ -79,6 +87,9 @@ export default async function KategoriPage({ params }) {
                   {c.adi}
                 </Link>
               ))}
+            </div>
+            <div className="lg:hidden flex mt-4">
+              <BlogSearch />
             </div>
           </div>
         </Container>

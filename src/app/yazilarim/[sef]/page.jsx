@@ -14,7 +14,11 @@ export async function generateMetadata({ params }) {
   const { sef } = await params;
   try {
     const { blog } = await BlogService.getBlogDetail(sef);
-    const desc = blog.icerik.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim().slice(0, 155);
+    const desc = blog.icerik
+      .replace(/<[^>]+>/g, "")
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0, 155);
     const ogImage = blog.resim ? `${BASE_URL}${blog.resim}` : undefined;
     return {
       ...buildMeta({
@@ -23,7 +27,13 @@ export async function generateMetadata({ params }) {
         path: `/yazilarim/${sef}`,
         ogImage,
       }),
-      keywords: [blog.baslik, blog.kategori_adi, "beslenme", "diyet", AUTHOR_NAME],
+      keywords: [
+        blog.baslik,
+        blog.kategori_adi,
+        "beslenme",
+        "diyet",
+        AUTHOR_NAME,
+      ],
       openGraph: {
         type: "article",
         title: blog.baslik,
@@ -67,11 +77,19 @@ export default async function BlogDetailPage({ params }) {
     "@type": "BlogPosting",
     "@id": `${SITE_URL}/yazilarim/${sef}`,
     headline: blog.baslik,
-    description: blog.icerik.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim().slice(0, 155),
+    description: blog.icerik
+      .replace(/<[^>]+>/g, "")
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0, 155),
     image: blog.resim ? `${BASE_URL}${blog.resim}` : `${SITE_URL}/profile.png`,
     datePublished: blog.tarih,
     dateModified: blog.tarih,
-    author: { "@type": "Person", name: AUTHOR_NAME, url: `${SITE_URL}/hakkimda` },
+    author: {
+      "@type": "Person",
+      name: AUTHOR_NAME,
+      url: `${SITE_URL}/hakkimda`,
+    },
     publisher: { "@id": `${SITE_URL}/#organization` },
     url: `${SITE_URL}/yazilarim/${sef}`,
     articleSection: blog.kategori_adi,
@@ -83,16 +101,32 @@ export default async function BlogDetailPage({ params }) {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Ana Sayfa", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: blog.kategori_adi, item: `${SITE_URL}/kategoriler/${blog.kategori_sef}` },
-      { "@type": "ListItem", position: 3, name: blog.baslik, item: `${SITE_URL}/yazilarim/${sef}` },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: blog.kategori_adi,
+        item: `${SITE_URL}/kategoriler/${blog.kategori_sef}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: blog.baslik,
+        item: `${SITE_URL}/yazilarim/${sef}`,
+      },
     ],
   };
 
   return (
     <main className="bg-slate-50 min-h-screen">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <div className="relative w-full h-64 md:h-80 lg:h-96 bg-slate-200 overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <div className="relative w-full h-72 md:h-[350px] lg:h-[450px] bg-slate-200 overflow-hidden">
         <Image
           src={`${BASE_URL}${blog.resim}`}
           alt={blog.baslik}
@@ -122,10 +156,10 @@ export default async function BlogDetailPage({ params }) {
         </div>
       </div>
 
-      <Container>
-        <div className="grid lg:grid-cols-3 gap-8 items-start">
-          <div className="lg:col-span-2">
-            <div className="flex flex-wrap items-center gap-4 py-4 mb-6 border-b border-slate-200">
+      <div className="grid lg:grid-cols-3 gap-8 items-start">
+        <div className="lg:col-span-2">
+          <Container>
+            <div className="flex flex-wrap items-center gap-4 py-4 border-b border-slate-200">
               <span className="flex items-center gap-1.5 text-sm text-slate-500">
                 <User className="w-4 h-4 text-violet-400" />
                 {blog.ekleyen}
@@ -146,8 +180,10 @@ export default async function BlogDetailPage({ params }) {
                 {blog.kategori_adi}
               </Link>
             </div>
+          </Container>
 
-            <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 md:p-10">
+          <Container className="xl:!px-4 !px-0 !py-0">
+            <div className="bg-white xl:rounded-2xl border border-slate-100 shadow-sm sm:p-6 md:p-10 py-6 px-4">
               <div
                 className="online-diet-desc blog-content text-slate-700 leading-relaxed
                   [&_p]:mb-4 [&_p]:leading-relaxed
@@ -164,7 +200,9 @@ export default async function BlogDetailPage({ params }) {
                 }}
               />
             </div>
+          </Container>
 
+          <Container>
             <BlogNavCards prev={prev} next={next} />
 
             <div className="mt-6 flex items-center justify-between flex-wrap gap-3">
@@ -176,11 +214,13 @@ export default async function BlogDetailPage({ params }) {
                 {blog.kategori_adi} yazılarına dön
               </Link>
             </div>
-          </div>
-
-          <BlogSidebar recentBlogs={recentBlogs} popularBlogs={popularBlogs} />
+          </Container>
         </div>
-      </Container>
+
+        <Container>
+          <BlogSidebar recentBlogs={recentBlogs} popularBlogs={popularBlogs} />
+        </Container>
+      </div>
     </main>
   );
 }

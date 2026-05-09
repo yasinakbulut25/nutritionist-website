@@ -60,7 +60,7 @@ export default function IletisimPage() {
                 Geçin
               </span>
             </h1>
-            <p className="text-slate-500 text-lg leading-relaxed">
+            <p className="text-slate-500 text-lg leading-relaxed text-balance">
               Sorularınız, randevu talepleriniz veya herhangi bir konuda benimle
               iletişime geçebilirsiniz.
             </p>

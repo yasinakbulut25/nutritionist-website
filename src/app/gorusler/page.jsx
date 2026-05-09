@@ -1,10 +1,14 @@
+import Link from "next/link";
+import { PenLine } from "lucide-react";
 import Container from "@/components/Container";
 import GoruslerGrid from "@/components/gorusler/GoruslerGrid";
 import { buildMeta } from "@/lib/seo";
+import ButtonPrimary from "@/components/buttons/ButtonPrimary";
 
 export const metadata = {
   ...buildMeta({
-    title: "Danışan Görüşleri & Başarı Hikayeleri | Diyetisyen Gizem Akbulut Öztürk",
+    title:
+      "Danışan Görüşleri & Başarı Hikayeleri | Diyetisyen Gizem Akbulut Öztürk",
     description:
       "1000+ danışanın gerçek deneyimleri. Online diyet programından sonraki değişim hikayeleri ve beslenme danışmanlığı başarı öyküleri.",
     path: "/gorusler",
@@ -36,10 +40,14 @@ export default function GoruslerPage() {
                 Görüşleri
               </span>
             </h1>
-            <p className="text-slate-500 text-lg leading-relaxed">
+            <p className="text-slate-500 text-lg leading-relaxed text-balance mb-4">
               Gerçek kişilerden, gerçek deneyimler. Danışanlarımın kendi
               sözleriyle anlattığı değişim hikayeleri.
             </p>
+            <ButtonPrimary as={Link} href="/goruslerinizi-iletin">
+              <PenLine className="w-4 h-4" />
+              Görüşünüzü İletin
+            </ButtonPrimary>
           </div>
         </Container>
       </div>

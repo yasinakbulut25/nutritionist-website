@@ -37,7 +37,7 @@ export default function GoruslerinizIletinPage() {
                 İletin
               </span>
             </h1>
-            <p className="text-slate-500 text-lg leading-relaxed">
+            <p className="text-slate-500 text-lg leading-relaxed text-balance">
               Danışmanlık sürecindeki deneyiminizi benimle ve diğer
               danışanlarımla paylaşın. Görüşleriniz çok değerli.
             </p>

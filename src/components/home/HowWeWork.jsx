@@ -74,7 +74,7 @@ function HowWeWork() {
                     {step.title}
                   </h3>
                 </div>
-                <p className="text-sm text-slate-600 leading-relaxed">
+                <p className="text-sm text-slate-600 leading-relaxed text-pretty">
                   {step.description}
                 </p>
               </div>
