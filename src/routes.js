@@ -38,22 +38,22 @@ export const routes = [
     submenu: [
       {
         text: "Beslenme",
-        href: "/hizmetler/beslenme-danismanligi",
+        href: "/kategoriler/beslenme",
         icon: Salad,
       },
       {
         text: "Tarifler",
-        href: "/hizmetler/diyet-programlari",
+        href: "/kategoriler/tarifler",
         icon: UtensilsCrossed,
       },
       {
         text: "Araştırma",
-        href: "/hizmetler/spor-beslenmesi",
+        href: "/kategoriler/arastirma",
         icon: Search,
       },
       {
         text: "Nedir",
-        href: "/hizmetler/online-danismanlik",
+        href: "/kategoriler/nedir",
         icon: CircleQuestionMark,
       },
     ],

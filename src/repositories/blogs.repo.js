@@ -31,4 +31,34 @@ export const BlogsRepo = {
 
     return rows;
   },
+
+  getRecent: async (limit = 10) => {
+    const db = getDB();
+    const [rows] = await db.query(
+      `SELECT y.id, y.baslik, y.sef, y.resim, y.hit,
+              k.adi as kategori_adi, k.sef as kategori_sef
+       FROM yazilar y
+       LEFT JOIN kategoriler k ON y.kategori = k.id
+       WHERE y.onay = 1
+       ORDER BY y.id DESC
+       LIMIT ?`,
+      [limit],
+    );
+    return rows;
+  },
+
+  getPopular: async (limit = 10) => {
+    const db = getDB();
+    const [rows] = await db.query(
+      `SELECT y.id, y.baslik, y.sef, y.resim, y.hit,
+              k.adi as kategori_adi, k.sef as kategori_sef
+       FROM yazilar y
+       LEFT JOIN kategoriler k ON y.kategori = k.id
+       WHERE y.onay = 1
+       ORDER BY y.hit DESC
+       LIMIT ?`,
+      [limit],
+    );
+    return rows;
+  },
 };
