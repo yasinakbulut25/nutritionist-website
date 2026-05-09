@@ -22,7 +22,7 @@ function MobileMenu() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
-    <div className="lg:hidden flex">
+    <div className="lg:hidden flex z-[9999]">
       <ButtonCustom
         onPress={onOpen}
         className="p-2 sm:px-3 px-2 h-auto min-w-max bg-white/40 dark:bg-slate-800/40 backdrop-blur-md"
@@ -62,9 +62,9 @@ function MobileMenu() {
                     width={35}
                     height={35}
                     src={"./logo.svg"}
-                    alt="Dyt. Gizem Akbulut"
+                    alt="Dyt. Gizem Akbulut Öztürk"
                   />
-                  Dyt. Gizem Akbulut
+                  Dyt. Gizem Akbulut Öztürk
                 </Link>
               </DrawerHeader>
               <DrawerBody>

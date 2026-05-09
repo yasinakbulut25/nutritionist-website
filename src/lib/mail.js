@@ -16,7 +16,7 @@ export async function sendContactNotification({ ad, email, mesaj }) {
   const transporter = getTransporter();
 
   await transporter.sendMail({
-    from: `"Gizem Akbulut Web" <${process.env.SMTP_USER}>`,
+    from: `"Gizem Akbulut Öztürk Web" <${process.env.SMTP_USER}>`,
     to: process.env.NOTIFICATION_EMAIL,
     subject: `Yeni İletişim Mesajı: ${ad}`,
     html: `
@@ -54,7 +54,7 @@ export async function sendNewCommentNotification({ ekleyen, sehir, icerik }) {
   const transporter = getTransporter();
 
   await transporter.sendMail({
-    from: `"Gizem Akbulut Web" <${process.env.SMTP_USER}>`,
+    from: `"Gizem Akbulut Öztürk Web" <${process.env.SMTP_USER}>`,
     to: process.env.NOTIFICATION_EMAIL,
     subject: `Yeni Görüş: ${ekleyen} (${sehir})`,
     html: `

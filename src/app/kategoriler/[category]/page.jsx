@@ -5,6 +5,7 @@ import { ArrowRight, BookOpen, Eye } from "lucide-react";
 import DOMPurify from "isomorphic-dompurify";
 import { BlogService } from "@/services/blogs.service";
 import { BASE_URL } from "@/utils/constants";
+import { buildMeta, SITE_NAME, SITE_URL } from "@/lib/seo";
 import Container from "@/components/Container";
 import BlogSidebar from "@/components/blogs/BlogSidebar";
 
@@ -12,12 +13,17 @@ export async function generateMetadata({ params }) {
   const { category } = await params;
   try {
     const { category: cat } = await BlogService.getCategoryPage(category);
+    const desc = cat.aciklama || `${cat.adi} kategorisindeki beslenme ve diyet yazıları. Diyetisyen Gizem Akbulut Öztürk tarafından hazırlanmış içerikler.`;
     return {
-      title: `${cat.adi} | Diyetisyen Gizem Akbulut`,
-      description: cat.aciklama,
+      ...buildMeta({
+        title: `${cat.adi} | ${SITE_NAME}`,
+        description: desc,
+        path: `/kategoriler/${category}`,
+      }),
+      keywords: [cat.adi, "beslenme yazıları", "diyet blogu", "diyetisyen Gizem Akbulut Öztürk"],
     };
   } catch {
-    return { title: "Kategori | Diyetisyen Gizem Akbulut" };
+    return { title: `Yazılar | ${SITE_NAME}` };
   }
 }
 

@@ -7,10 +7,22 @@ import IletisimForm from "@/components/iletisim/IletisimForm";
 import { INSTAGRAM_URL, WHATSAPP_URL } from "@/utils/constants";
 import SssAccordion from "@/components/sss/SssAccordion";
 
+import { buildMeta } from "@/lib/seo";
+
 export const metadata = {
-  title: "İletişim | Diyetisyen Gizem Akbulut",
-  description:
-    "Sorularınız ve randevu talepleriniz için benimle iletişime geçin.",
+  ...buildMeta({
+    title: "İletişim | Diyetisyen Gizem Akbulut Öztürk",
+    description:
+      "Online diyet danışmanlığı için WhatsApp veya iletişim formu aracılığıyla ulaşın. En kısa sürede yanıt verilir.",
+    path: "/iletisim",
+  }),
+  keywords: [
+    "diyetisyen iletişim",
+    "online diyet randevu",
+    "beslenme danışmanlığı WhatsApp",
+    "diyetisyen Gizem Akbulut iletişim",
+    "diyetisyen Gizem Akbulut Öztürk iletişim",
+  ],
 };
 
 const contacts = [

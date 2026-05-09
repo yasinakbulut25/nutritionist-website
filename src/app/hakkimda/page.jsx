@@ -8,11 +8,40 @@ import { INSTAGRAM_URL } from "@/utils/constants";
 import Container from "@/components/Container";
 import ButtonWhatsapp from "@/components/buttons/ButtonWhatsapp";
 import ButtonPrimary from "@/components/buttons/ButtonPrimary";
+import { buildMeta, SITE_URL, AUTHOR_NAME } from "@/lib/seo";
 
 export const metadata = {
-  title: "Hakkımda | Diyetisyen Gizem Akbulut",
-  description:
-    "Diyetisyen Gizem Akbulut hakkında bilgi edinin. Eğitim geçmişi, sertifikalar ve uzmanlık alanları.",
+  ...buildMeta({
+    title: "Hakkımda | Diyetisyen Gizem Akbulut Öztürk",
+    description:
+      "Ondokuz Mayıs Üniversitesi Beslenme ve Diyetetik mezunu, Erasmus+ İtalya stajyeri ve 500+ danışanlı online diyetisyen Gizem Akbulut Öztürk hakkında bilgi edinin.",
+    path: "/hakkimda",
+  }),
+  keywords: [
+    "Gizem Akbulut diyetisyen",
+    "diyetisyen hakkımda",
+    "Ondokuz Mayıs Üniversitesi beslenme",
+    "online diyetisyen Türkiye",
+    "beslenme ve diyetetik uzmanı",
+    "Gizem Akbulut Öztürk diyetisyen",
+  ],
+};
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${SITE_URL}/hakkimda#person`,
+  name: AUTHOR_NAME,
+  jobTitle: "Diyetisyen",
+  url: `${SITE_URL}/hakkimda`,
+  image: `${SITE_URL}/profile.png`,
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Ondokuz Mayıs Üniversitesi",
+    department: "Beslenme ve Diyetetik",
+  },
+  sameAs: ["https://www.instagram.com/dyt.gizemakbulut/"],
+  worksFor: { "@id": `${SITE_URL}/#organization` },
 };
 
 const highlights = [
@@ -69,6 +98,10 @@ export default async function HakkimdaPage() {
 
   return (
     <main className="bg-slate-50 min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
       <div className="relative overflow-hidden bg-gradient-to-br from-violet-50 via-white to-slate-50 border-b border-slate-100">
         <div className="pointer-events-none absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full blur-3xl bg-violet-200/40 z-10" />
         <div className="pointer-events-none absolute -bottom-24 right-0 w-96 h-96 rounded-full blur-3xl bg-violet-100/60 z-10" />
@@ -80,7 +113,7 @@ export default async function HakkimdaPage() {
                 <div className="relative w-full h-full rounded-full border-4 border-white shadow-xl overflow-hidden bg-violet-100">
                   <Image
                     src="/profile.png"
-                    alt="Diyetisyen Gizem Akbulut"
+                    alt="Diyetisyen Gizem Akbulut Öztürk"
                     fill
                     className="object-cover object-top"
                     priority

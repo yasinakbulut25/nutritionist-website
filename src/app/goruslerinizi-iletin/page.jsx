@@ -2,11 +2,21 @@ import Image from "next/image";
 import Container from "@/components/Container";
 import GorusForm from "@/components/goruslerinizi-iletin/GorusForm";
 import Testimonials from "@/components/home/Testimonials";
+import { buildMeta } from "@/lib/seo";
 
 export const metadata = {
-  title: "Görüşünüzü İletin | Diyetisyen Gizem Akbulut",
-  description:
-    "Danışmanlık deneyiminizi paylaşın. Görüşleriniz bizim için çok değerli.",
+  ...buildMeta({
+    title: "Görüşünüzü İletin | Diyetisyen Gizem Akbulut Öztürk",
+    description:
+      "Beslenme danışmanlığı sürecindeki deneyiminizi paylaşın. Görüşleriniz diğer danışanlara ilham olacak.",
+    path: "/goruslerinizi-iletin",
+  }),
+  keywords: [
+    "diyet deneyimi paylaş",
+    "beslenme danışmanlığı yorum",
+    "diyetisyen görüş bırak",
+  ],
+  robots: { index: false, follow: true },
 };
 
 export default function GoruslerinizIletinPage() {

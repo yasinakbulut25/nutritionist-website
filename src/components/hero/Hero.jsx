@@ -52,7 +52,7 @@ const checkItems = [
 
 export default function Hero() {
   return (
-    <section className="relative h-screen max-h-[992px] hero-gradient overflow-hidden flex items-center mb-10">
+    <section className="relative lg:h-screen lg:max-h-[992px] hero-gradient overflow-hidden flex items-center mb-10">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

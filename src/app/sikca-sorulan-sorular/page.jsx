@@ -3,18 +3,48 @@ import { SssService } from "@/services/sss.service";
 import Container from "@/components/Container";
 import SssAccordion from "@/components/sss/SssAccordion";
 import ButtonWhatsapp from "@/components/buttons/ButtonWhatsapp";
+import { buildMeta, SITE_URL } from "@/lib/seo";
 
 export const metadata = {
-  title: "Sıkça Sorulan Sorular | Diyetisyen Gizem Akbulut",
-  description:
-    "Online diyet danışmanlığı hakkında merak ettiğiniz soruların cevapları.",
+  ...buildMeta({
+    title: "Sıkça Sorulan Sorular | Online Diyet Hakkında Merak Edilenler",
+    description:
+      "Online diyet danışmanlığı nasıl işler? Program süresi, ücretler, WhatsApp desteği ve daha fazlası hakkında sık sorulan sorular.",
+    path: "/sikca-sorulan-sorular",
+  }),
+  keywords: [
+    "online diyet sık sorulan sorular",
+    "diyet danışmanlığı nasıl işler",
+    "beslenme programı ücret",
+    "WhatsApp diyet desteği",
+    "online diyetisyen SSS",
+  ],
 };
 
 export default async function SikcaSorulanSorularPage() {
   const items = await SssService.getAll();
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${SITE_URL}/sikca-sorulan-sorular#faq`,
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.soru,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.cevap.replace(/<[^>]+>/g, ""),
+      },
+    })),
+  };
+
   return (
     <main className="bg-slate-50 min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
       <div className="relative overflow-hidden bg-gradient-to-br from-violet-50 via-white to-slate-50 border-b border-slate-100">
         <div className="pointer-events-none absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full blur-3xl bg-violet-200/35" />
         <div className="pointer-events-none absolute -bottom-20 right-0 w-80 h-80 rounded-full blur-3xl bg-violet-100/50" />

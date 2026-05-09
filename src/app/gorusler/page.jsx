@@ -1,10 +1,21 @@
 import Container from "@/components/Container";
 import GoruslerGrid from "@/components/gorusler/GoruslerGrid";
+import { buildMeta } from "@/lib/seo";
 
 export const metadata = {
-  title: "Görüşler | Diyetisyen Gizem Akbulut",
-  description:
-    "Danışanlarımın deneyimleri ve başarı hikayeleri. Gerçek kişilerden gerçek sonuçlar.",
+  ...buildMeta({
+    title: "Danışan Görüşleri & Başarı Hikayeleri | Diyetisyen Gizem Akbulut Öztürk",
+    description:
+      "1000+ danışanın gerçek deneyimleri. Online diyet programından sonraki değişim hikayeleri ve beslenme danışmanlığı başarı öyküleri.",
+    path: "/gorusler",
+  }),
+  keywords: [
+    "diyet başarı hikayeleri",
+    "danışan yorumları",
+    "online diyet sonuçları",
+    "beslenme danışmanlığı yorumları",
+    "diyetisyen referanslar",
+  ],
 };
 
 export default function GoruslerPage() {

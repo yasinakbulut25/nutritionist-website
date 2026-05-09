@@ -5,6 +5,7 @@ import { ArrowLeft, Calendar, User, Eye, Tag } from "lucide-react";
 import DOMPurify from "isomorphic-dompurify";
 import { BlogService } from "@/services/blogs.service";
 import { BASE_URL } from "@/utils/constants";
+import { buildMeta, SITE_NAME, SITE_URL, AUTHOR_NAME } from "@/lib/seo";
 import Container from "@/components/Container";
 import BlogSidebar from "@/components/blogs/BlogSidebar";
 import BlogNavCards from "@/components/blogs/BlogNavCards";
@@ -13,12 +14,30 @@ export async function generateMetadata({ params }) {
   const { sef } = await params;
   try {
     const { blog } = await BlogService.getBlogDetail(sef);
+    const desc = blog.icerik.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim().slice(0, 155);
+    const ogImage = blog.resim ? `${BASE_URL}${blog.resim}` : undefined;
     return {
-      title: `${blog.baslik} | Diyetisyen Gizem Akbulut`,
-      description: blog.icerik.replace(/<[^>]+>/g, "").slice(0, 155),
+      ...buildMeta({
+        title: `${blog.baslik} | ${SITE_NAME}`,
+        description: desc,
+        path: `/yazilarim/${sef}`,
+        ogImage,
+      }),
+      keywords: [blog.baslik, blog.kategori_adi, "beslenme", "diyet", AUTHOR_NAME],
+      openGraph: {
+        type: "article",
+        title: blog.baslik,
+        description: desc,
+        url: `${SITE_URL}/yazilarim/${sef}`,
+        images: ogImage ? [{ url: ogImage, alt: blog.baslik }] : undefined,
+        publishedTime: blog.tarih,
+        authors: [AUTHOR_NAME],
+        section: blog.kategori_adi,
+        tags: [blog.kategori_adi, "beslenme", "diyet"],
+      },
     };
   } catch {
-    return { title: "Yazı | Diyetisyen Gizem Akbulut" };
+    return { title: `Yazı | ${SITE_NAME}` };
   }
 }
 
@@ -43,8 +62,36 @@ export default async function BlogDetailPage({ params }) {
 
   const { blog, recentBlogs, popularBlogs, prev, next } = data;
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": `${SITE_URL}/yazilarim/${sef}`,
+    headline: blog.baslik,
+    description: blog.icerik.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim().slice(0, 155),
+    image: blog.resim ? `${BASE_URL}${blog.resim}` : `${SITE_URL}/profile.png`,
+    datePublished: blog.tarih,
+    dateModified: blog.tarih,
+    author: { "@type": "Person", name: AUTHOR_NAME, url: `${SITE_URL}/hakkimda` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    url: `${SITE_URL}/yazilarim/${sef}`,
+    articleSection: blog.kategori_adi,
+    inLanguage: "tr-TR",
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Ana Sayfa", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: blog.kategori_adi, item: `${SITE_URL}/kategoriler/${blog.kategori_sef}` },
+      { "@type": "ListItem", position: 3, name: blog.baslik, item: `${SITE_URL}/yazilarim/${sef}` },
+    ],
+  };
+
   return (
     <main className="bg-slate-50 min-h-screen">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <div className="relative w-full h-64 md:h-80 lg:h-96 bg-slate-200 overflow-hidden">
         <Image
           src={`${BASE_URL}${blog.resim}`}

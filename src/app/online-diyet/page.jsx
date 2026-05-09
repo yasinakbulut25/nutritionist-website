@@ -16,10 +16,23 @@ import Packages from "@/components/home/Packages";
 import Testimonials from "@/components/home/Testimonials";
 import ButtonWhatsapp from "@/components/buttons/ButtonWhatsapp";
 
+import { buildMeta } from "@/lib/seo";
+
 export const metadata = {
-  title: "Online Diyet | Diyetisyen Gizem Akbulut",
-  description:
-    "Aç kalmadan, kişiye özel online beslenme danışmanlığı ile sağlıklı yaşama adım atın.",
+  ...buildMeta({
+    title: "Online Diyet Danışmanlığı | Kişiye Özel Program",
+    description:
+      "Aç kalmadan, kişiye özel online beslenme programı. Haftalık WhatsApp takibi ile sürdürülebilir diyet. Paketleri inceleyin ve hemen başlayın.",
+    path: "/online-diyet",
+  }),
+  keywords: [
+    "online diyet",
+    "online beslenme danışmanlığı",
+    "kişiye özel diyet programı",
+    "WhatsApp diyet takibi",
+    "uzaktan beslenme danışmanlığı",
+    "sürdürülebilir diyet",
+  ],
 };
 
 const targetIcons = [Briefcase, Home, Users, Heart, Baby, Apple];

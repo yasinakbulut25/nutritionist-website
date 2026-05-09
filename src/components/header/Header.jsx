@@ -14,7 +14,7 @@ function Header() {
   const [hoveredDropdown, setHoveredDropdown] = useState(null);
 
   return (
-    <header className="z-[999] fixed sm:top-4 top-2 left-0 w-full sm:px-4 px-2">
+    <header className="z-30 fixed sm:top-4 top-2 left-0 w-full sm:px-4 px-2">
       <motion.div
         initial={{ opacity: 0, y: 40, scale: 0.8 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -31,9 +31,9 @@ function Header() {
                 width={35}
                 height={35}
                 src="/logo.svg"
-                alt="Dyt. Gizem Akbulut"
+                alt="Dyt. Gizem Akbulut Öztürk"
               />
-              Dyt. Gizem Akbulut
+              Dyt. Gizem Akbulut Öztürk
             </Link>
           </div>
 
