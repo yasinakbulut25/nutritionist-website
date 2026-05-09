@@ -1,7 +1,5 @@
-import Link from "next/link";
 import { MessageCircleMore } from "lucide-react";
 import { SssService } from "@/services/sss.service";
-import { WHATSAPP_URL } from "@/utils/constants";
 import Container from "@/components/Container";
 import SssAccordion from "@/components/sss/SssAccordion";
 import ButtonWhatsapp from "@/components/buttons/ButtonWhatsapp";
