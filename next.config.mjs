@@ -3,7 +3,6 @@ const nextConfig = {
   images: {
     domains: ["diyetisyengizemakbulut.com"],
   },
-  serverExternalPackages: ["nodemailer"],
 };
 
 export default nextConfig;

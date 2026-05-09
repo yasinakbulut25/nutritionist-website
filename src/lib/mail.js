@@ -1,4 +1,6 @@
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 function he(s) {
   return String(s)
@@ -9,30 +11,15 @@ function he(s) {
     .replace(/'/g, "&#039;");
 }
 
-function getTransporter() {
-  return nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: Number(process.env.SMTP_PORT) || 587,
-    secure: process.env.SMTP_SECURE === "true",
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASSWORD,
-    },
-  });
-}
-
 export async function sendContactNotification({ ad, email, mesaj }) {
-  const transporter = getTransporter();
-
-  await transporter.sendMail({
-    from: `"Gizem Akbulut Öztürk Web" <${process.env.SMTP_USER}>`,
+  await resend.emails.send({
+    from: process.env.RESEND_FROM,
     to: process.env.NOTIFICATION_EMAIL,
     subject: `Yeni İletişim Mesajı: ${he(ad)}`,
     html: `
       <div style="font-family:sans-serif;max-width:560px;margin:0 auto;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden">
         <div style="background:linear-gradient(135deg,#7c3aed,#a78bfa);padding:24px 28px">
-          <h2 style="margin:0;color:#fff;font-size:18px">Yeni İletişim Mesajı 📩</h2>
-          <p style="margin:4px 0 0;color:#ede9fe;font-size:13px">diyetisyengizemakbulut.com</p>
+          <h2 style="margin:0;color:#fff;font-size:18px">Yeni İletişim Mesajı</h2>
         </div>
         <div style="padding:28px;background:#fff">
           <table style="width:100%;border-collapse:collapse;font-size:14px">
@@ -60,17 +47,14 @@ export async function sendContactNotification({ ad, email, mesaj }) {
 }
 
 export async function sendNewCommentNotification({ ekleyen, sehir, icerik }) {
-  const transporter = getTransporter();
-
-  await transporter.sendMail({
-    from: `"Gizem Akbulut Öztürk Web" <${process.env.SMTP_USER}>`,
+  await resend.emails.send({
+    from: process.env.RESEND_FROM,
     to: process.env.NOTIFICATION_EMAIL,
     subject: `Yeni Görüş: ${he(ekleyen)} (${he(sehir)})`,
     html: `
       <div style="font-family:sans-serif;max-width:560px;margin:0 auto;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden">
         <div style="background:linear-gradient(135deg,#7c3aed,#a78bfa);padding:24px 28px">
-          <h2 style="margin:0;color:#fff;font-size:18px">Yeni Danışan Görüşü 💬</h2>
-          <p style="margin:4px 0 0;color:#ede9fe;font-size:13px">diyetisyengizemakbulut.com</p>
+          <h2 style="margin:0;color:#fff;font-size:18px">Yeni Danışan Görüşü</h2>
         </div>
         <div style="padding:28px;background:#fff">
           <table style="width:100%;border-collapse:collapse;font-size:14px">
