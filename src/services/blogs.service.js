@@ -3,19 +3,18 @@ import { CategoryRepo } from "@/repositories/category.repo";
 
 export const BlogService = {
   getBlogDetail: async (sef) => {
-    const [blog, recentBlogs, popularBlogs] = await Promise.all([
-      BlogsRepo.getBySef(sef),
-      BlogsRepo.getRecent(10),
-      BlogsRepo.getPopular(10),
-      CategoryRepo.getAll(),
-    ]);
-
+    const blog = await BlogsRepo.getBySef(sef);
     if (!blog) throw new Error("Yazı bulunamadı");
 
-    // increment hit count — non-blocking
+    const [recentBlogs, popularBlogs, prevNext] = await Promise.all([
+      BlogsRepo.getRecent(10),
+      BlogsRepo.getPopular(10),
+      BlogsRepo.getPrevNext(blog.id, blog.kategori_sef),
+    ]);
+
     BlogsRepo.incrementHit(blog.id).catch(() => {});
 
-    return { blog, recentBlogs, popularBlogs };
+    return { blog, recentBlogs, popularBlogs, ...prevNext };
   },
 
   getCategoryPage: async (sef) => {

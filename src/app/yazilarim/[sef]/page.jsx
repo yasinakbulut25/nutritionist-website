@@ -7,6 +7,7 @@ import { BlogService } from "@/services/blogs.service";
 import { BASE_URL } from "@/utils/constants";
 import Container from "@/components/Container";
 import BlogSidebar from "@/components/blogs/BlogSidebar";
+import BlogNavCards from "@/components/blogs/BlogNavCards";
 
 export async function generateMetadata({ params }) {
   const { sef } = await params;
@@ -40,7 +41,7 @@ export default async function BlogDetailPage({ params }) {
     notFound();
   }
 
-  const { blog, recentBlogs, popularBlogs } = data;
+  const { blog, recentBlogs, popularBlogs, prev, next } = data;
 
   return (
     <main className="bg-slate-50 min-h-screen">
@@ -116,6 +117,8 @@ export default async function BlogDetailPage({ params }) {
                 }}
               />
             </div>
+
+            <BlogNavCards prev={prev} next={next} />
 
             <div className="mt-6 flex items-center justify-between flex-wrap gap-3">
               <Link
