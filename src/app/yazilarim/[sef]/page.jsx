@@ -13,7 +13,7 @@ import BlogNavCards from "@/components/blogs/BlogNavCards";
 export async function generateMetadata({ params }) {
   const { sef } = await params;
   try {
-    const { blog } = await BlogService.getBlogDetail(sef);
+    const { blog } = await BlogService.getBlogMeta(sef);
     const desc = blog.icerik
       .replace(/<[^>]+>/g, "")
       .replace(/\s+/g, " ")

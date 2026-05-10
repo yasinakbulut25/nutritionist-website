@@ -2,17 +2,18 @@ import { BlogsRepo } from "@/repositories/blogs.repo";
 import { CategoryRepo } from "@/repositories/category.repo";
 
 export const BlogService = {
+  // Used by generateMetadata only — does NOT increment hit count.
+  getBlogMeta: async (sef) => {
+    const blog = await BlogsRepo.getBySef(sef);
+    if (!blog) throw new Error("Yazı bulunamadı");
+    return { blog };
+  },
+
+  // Used by the page render — increments hit count exactly once per request.
   getBlogDetail: async (sef) => {
-    // Fetch the main blog row first — if it doesn't exist we stop here and
-    // avoid wasting connections on sidebar queries for a 404 page.
     const blog = await BlogsRepo.getBySef(sef);
     if (!blog) throw new Error("Yazı bulunamadı");
 
-    // Split into two groups of 2 instead of one group of 3.
-    // cPanel shared hosting caps total connections per user (often 10–15).
-    // Running 3 queries in parallel per request means ~3 connections per
-    // Vercel invocation; multiple concurrent visitors exhaust that limit fast.
-    // Two sequential pairs keep the peak at 2 connections per request.
     const [recentBlogs, popularBlogs] = await Promise.all([
       BlogsRepo.getRecent(10),
       BlogsRepo.getPopular(10),
