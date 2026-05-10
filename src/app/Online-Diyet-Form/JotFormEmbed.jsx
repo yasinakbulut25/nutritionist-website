@@ -9,7 +9,7 @@ export default function JotFormEmbed() {
         id="JotFormIFrame-250124941468053"
         title="Online Diyet Form"
         onLoad={() => window.parent.scrollTo(0, 0)}
-        allowTransparency="true"
+        allowtransparency="true"
         allow="geolocation; microphone; camera; fullscreen"
         src="https://form.jotform.com/250124941468053"
         style={{

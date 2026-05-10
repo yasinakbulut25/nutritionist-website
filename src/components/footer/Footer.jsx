@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone, MapPin, Heart } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { routes } from "@/routes";
 import { WHATSAPP_URL, INSTAGRAM_URL } from "@/utils/constants";
 import { Instagram, Whatsapp } from "react-bootstrap-icons";
