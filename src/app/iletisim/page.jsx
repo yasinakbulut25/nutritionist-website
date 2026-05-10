@@ -5,7 +5,6 @@ import { Whatsapp } from "react-bootstrap-icons";
 import Container from "@/components/Container";
 import IletisimForm from "@/components/iletisim/IletisimForm";
 import { INSTAGRAM_URL, WHATSAPP_URL } from "@/utils/constants";
-import SssAccordion from "@/components/sss/SssAccordion";
 
 import { buildMeta } from "@/lib/seo";
 

@@ -8,7 +8,7 @@ function BlogCard({ post }) {
   return (
     <article className="group bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-violet-300 transition-all duration-300 hover:shadow-xl">
       <Link
-        href={`/yazi/${post.sef}`}
+        href={`/yazilarim/${post.sef}`}
         className="block relative overflow-hidden aspect-[16/10]"
       >
         <Image
@@ -25,7 +25,7 @@ function BlogCard({ post }) {
       </Link>
 
       <div className="p-6">
-        <Link href={`/yazi/${post.sef}`}>
+        <Link href={`/yazilarim/${post.sef}`}>
           <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-violet-600 transition-colors line-clamp-2">
             {post.baslik}
           </h3>
@@ -39,7 +39,7 @@ function BlogCard({ post }) {
         />
 
         <Link
-          href={`/yazi/${post.sef}`}
+          href={`/yazilarim/${post.sef}`}
           className="inline-flex items-center gap-2 text-violet-600 font-semibold text-sm group-hover:gap-3 transition-all duration-300"
         >
           Devamını Oku
