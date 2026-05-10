@@ -102,6 +102,7 @@ function Header() {
                 <Link
                   key={index}
                   href={route.href}
+                  target={route.target ? route.target : ""}
                   className="flex items-center gap-2 px-3 py-2 text-sm min-w-max text-black hover:text-violet-500 dark:text-white dark:hover:text-violet-300 duration-200 rounded-lg hover:bg-violet-50 dark:hover:bg-violet-900/20"
                 >
                   {route.text}

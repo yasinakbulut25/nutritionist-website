@@ -115,7 +115,7 @@ function Footer() {
                   <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-lg bg-white/10 border border-white/10 mt-0.5">
                     <MapPin className="w-4 h-4" />
                   </span>
-                  <span>Küçükçekmece / Florya, İstanbul</span>
+                  <span>Florya, İstanbul</span>
                 </div>
               </li>
             </ul>

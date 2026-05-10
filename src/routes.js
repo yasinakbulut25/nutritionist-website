@@ -29,6 +29,7 @@ export const routes = [
     href: "https://egitim.diyetisyengizemakbulut.com/",
     type: "link",
     icon: Video,
+    target: "_blank"
   },
   {
     text: "Yazılarım",

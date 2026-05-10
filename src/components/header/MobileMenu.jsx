@@ -125,6 +125,7 @@ function MobileMenu() {
                         key={index}
                         href={route.href}
                         onClick={onClose}
+                        target={route.target ? route.target : ""}
                         className="flex items-center gap-2 py-2 w-full text-base text-black hover:text-violet-500 dark:text-white dark:hover:text-violet-400 transition-colors duration-100"
                       >
                         {route.icon && (
