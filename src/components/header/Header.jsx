@@ -30,7 +30,7 @@ function Header() {
               <Image
                 width={35}
                 height={35}
-                src="/logo.svg"
+                src="/logo.png"
                 alt="Dyt. Gizem Akbulut Öztürk"
               />
               Dyt. Gizem Akbulut Öztürk

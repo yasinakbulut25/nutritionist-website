@@ -58,7 +58,7 @@ const organizationSchema = {
   "@id": `${SITE_URL}/#organization`,
   name: SITE_NAME,
   url: SITE_URL,
-  logo: `${SITE_URL}/logo.svg`,
+  logo: `${SITE_URL}/logo.png`,
   image: `${SITE_URL}/profile.png`,
   description:
     "Kişiye özel online diyet danışmanlığı ve beslenme programları. Diyetisyen Gizem Akbulut Öztürk.",

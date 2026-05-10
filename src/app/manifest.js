@@ -11,7 +11,7 @@ export default function manifest() {
     background_color: "#f8fafc",
     theme_color: "#7c3aed",
     icons: [
-      { src: "/logo.svg", sizes: "any", type: "image/svg+xml" },
+      { src: "/logo.png", sizes: "any", type: "image/png" },
     ],
     related_applications: [],
     prefer_related_applications: false,

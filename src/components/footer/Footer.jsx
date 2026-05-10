@@ -30,7 +30,7 @@ function Footer() {
                 <Image
                   width={36}
                   height={36}
-                  src="/logo.svg"
+                  src="/logo.png"
                   alt="Dyt. Gizem Akbulut Öztürk"
                 />
               </div>
