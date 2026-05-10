@@ -1,5 +1,5 @@
-import DOMPurify from "isomorphic-dompurify";
 import { Sparkles, Zap, Crown } from "lucide-react";
+import SafeHtml from "@/components/SafeHtml";
 import Link from "next/link";
 import Container from "../Container";
 import TitleWithDesc from "../TitleWithDesc";
@@ -88,11 +88,9 @@ async function Packages() {
                   </div>
 
                   <div className="p-8 bg-white">
-                    <div
+                    <SafeHtml
+                      html={pkg.icerik}
                       className="online-diet-desc flex flex-col gap-2 mb-6"
-                      dangerouslySetInnerHTML={{
-                        __html: DOMPurify.sanitize(pkg.icerik),
-                      }}
                     />
 
                     <ButtonCustom

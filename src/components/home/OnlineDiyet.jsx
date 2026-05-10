@@ -1,6 +1,6 @@
 import { OnlineDiyetService } from "@/services/onlineDiyet.service";
-import DOMPurify from "isomorphic-dompurify";
 import { ArrowRight } from "lucide-react";
+import SafeHtml from "@/components/SafeHtml";
 import Image from "next/image";
 import Link from "next/link";
 import Container from "../Container";
@@ -17,11 +17,9 @@ async function OnlineDiyet() {
       <div className="grid gap-10 lg:grid-cols-2">
         <div>
           <Title>Online Diyet</Title>
-          <div
+          <SafeHtml
+            html={data.icerik}
             className="online-diet-desc flex flex-col gap-2 mb-4"
-            dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(data.icerik),
-            }}
           />
           <ButtonPrimary
             as={Link}

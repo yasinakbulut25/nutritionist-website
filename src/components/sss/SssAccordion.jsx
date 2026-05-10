@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import DOMPurify from "isomorphic-dompurify";
+import SafeHtml from "@/components/SafeHtml";
 
 export default function SssAccordion({ items }) {
   const [openId, setOpenId] = useState(null);
@@ -48,14 +48,12 @@ export default function SssAccordion({ items }) {
               }`}
             >
               <div className="overflow-hidden">
-                <div
+                <SafeHtml
+                  html={item.cevap}
                   className="px-6 pb-5 pl-[4.5rem] text-slate-600 text-sm leading-relaxed
                     [&_br]:block [&_br]:mb-1.5
                     [&_strong]:font-semibold [&_strong]:text-slate-800
                     [&_a]:text-violet-600 [&_a]:underline [&_a]:underline-offset-2"
-                  dangerouslySetInnerHTML={{
-                    __html: DOMPurify.sanitize(item.cevap),
-                  }}
                 />
               </div>
             </div>

@@ -1,4 +1,4 @@
-import DOMPurify from "isomorphic-dompurify";
+import SafeHtml from "@/components/SafeHtml";
 import Image from "next/image";
 import Link from "next/link";
 import { GraduationCap, Globe, Award, Users } from "lucide-react";
@@ -176,11 +176,9 @@ export default async function HakkimdaPage() {
               {bio.baslik}
             </span>
           </h2>
-          <div
+          <SafeHtml
+            html={bio.icerik}
             className="hakkimda-bio text-slate-600 text-base md:text-lg leading-relaxed [&_h2]:text-slate-800 [&_h2]:font-semibold [&_h2]:text-xl [&_h2]:mt-6 [&_p]:mb-4"
-            dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(bio.icerik),
-            }}
           />
         </div>
       </Container>

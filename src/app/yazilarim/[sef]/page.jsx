@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Calendar, User, Eye, Tag } from "lucide-react";
-import DOMPurify from "isomorphic-dompurify";
+import SafeHtml from "@/components/SafeHtml";
 import { BlogService } from "@/services/blogs.service";
 import { BASE_URL } from "@/utils/constants";
 import { buildMeta, SITE_NAME, SITE_URL, AUTHOR_NAME } from "@/lib/seo";
@@ -174,7 +174,8 @@ export default async function BlogDetailPage({ params }) {
 
           <Container className="xl:!px-4 !px-0 !py-0">
             <div className="bg-white xl:rounded-2xl border border-slate-100 shadow-sm sm:p-6 md:p-10 py-6 px-4">
-              <div
+              <SafeHtml
+                html={blog.icerik}
                 className="online-diet-desc blog-content text-slate-700 leading-relaxed
                   [&_p]:mb-4 [&_p]:leading-relaxed
                   [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-slate-900 [&_h2]:mt-8 [&_h2]:mb-3
@@ -185,9 +186,6 @@ export default async function BlogDetailPage({ params }) {
                   [&_a]:text-violet-600 [&_a]:underline [&_a]:underline-offset-2 [&_a]:hover:text-violet-800
                   [&_img]:rounded-xl [&_img]:my-6 [&_img]:mx-auto
                   [&_blockquote]:border-l-4 [&_blockquote]:border-violet-400 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-slate-600 [&_blockquote]:my-6"
-                dangerouslySetInnerHTML={{
-                  __html: DOMPurify.sanitize(blog.icerik),
-                }}
               />
             </div>
           </Container>

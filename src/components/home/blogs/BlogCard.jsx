@@ -1,6 +1,6 @@
 import { BASE_URL } from "@/utils/constants";
-import DOMPurify from "isomorphic-dompurify";
 import { ArrowRight } from "lucide-react";
+import SafeHtml from "@/components/SafeHtml";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -31,11 +31,9 @@ function BlogCard({ post }) {
           </h3>
         </Link>
 
-        <div
+        <SafeHtml
+          html={post.icerik}
           className="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3"
-          dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize(post.icerik),
-          }}
         />
 
         <Link

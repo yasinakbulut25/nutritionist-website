@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, BookOpen, Eye } from "lucide-react";
-import DOMPurify from "isomorphic-dompurify";
+import SafeHtml from "@/components/SafeHtml";
 import { BlogService } from "@/services/blogs.service";
 import { BASE_URL } from "@/utils/constants";
 import { buildMeta, SITE_NAME, SITE_URL } from "@/lib/seo";
@@ -136,11 +136,9 @@ export default async function KategoriPage({ params }) {
                         </h2>
                       </Link>
 
-                      <div
+                      <SafeHtml
+                        html={post.icerik}
                         className="text-slate-500 text-sm leading-relaxed mb-4 line-clamp-2"
-                        dangerouslySetInnerHTML={{
-                          __html: DOMPurify.sanitize(post.icerik),
-                        }}
                       />
 
                       <div className="flex items-center justify-between">

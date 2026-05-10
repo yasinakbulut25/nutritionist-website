@@ -1,4 +1,4 @@
-import DOMPurify from "isomorphic-dompurify";
+import SafeHtml from "@/components/SafeHtml";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -157,7 +157,8 @@ export default async function OnlineDiyetPage() {
               Online Beslenme Danışmanlığı Hakkında
             </span>
           </h2>
-          <div
+          <SafeHtml
+            html={longData.icerik}
             className="online-diet-desc text-slate-600 text-base leading-relaxed
               [&_ul]:flex [&_ul]:flex-col [&_ul]:gap-2 [&_ul]:my-4 [&_ul]:pl-1
               [&_li]:flex [&_li]:items-start [&_li]:gap-2 [&_li]:text-slate-600
@@ -165,9 +166,6 @@ export default async function OnlineDiyetPage() {
               [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-slate-800 [&_h2]:mt-8 [&_h2]:mb-4
               [&_strong]:font-semibold [&_strong]:text-slate-800
               [&_a]:text-violet-600 [&_a]:underline [&_a]:underline-offset-2"
-            dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(longData.icerik),
-            }}
           />
         </div>
       </Container>
