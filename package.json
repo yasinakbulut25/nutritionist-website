@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "@heroui/react": "^2.7.9",
+    "embla-carousel-autoplay": "^8.6.0",
+    "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.23.12",
     "isomorphic-dompurify": "^3.8.0",
     "lucide-react": "^1.7.0",

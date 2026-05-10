@@ -35,20 +35,7 @@ function MobileMenu() {
         placement="left"
         backdrop="blur"
         isOpen={isOpen}
-        motionProps={{
-          variants: {
-            enter: {
-              opacity: 1,
-              x: 0,
-              duration: 0.3,
-            },
-            exit: {
-              x: -100,
-              opacity: 0,
-              duration: 0.3,
-            },
-          },
-        }}
+        disableAnimation
         onOpenChange={onOpenChange}
       >
         <DrawerContent>

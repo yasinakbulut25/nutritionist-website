@@ -5,7 +5,7 @@ import { ArrowRight, BookOpen, Eye } from "lucide-react";
 import SafeHtml from "@/components/SafeHtml";
 import { BlogService } from "@/services/blogs.service";
 import { BASE_URL } from "@/utils/constants";
-import { buildMeta, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { buildMeta, SITE_NAME } from "@/lib/seo";
 import Container from "@/components/Container";
 import BlogSidebar from "@/components/blogs/BlogSidebar";
 import BlogSearch from "@/components/blogs/BlogSearch";
@@ -54,8 +54,8 @@ export default async function KategoriPage({ params }) {
   } = data;
 
   return (
-    <main className="bg-slate-50 min-h-screen">
-      <div className="relative overflow-hidden bg-gradient-to-br from-violet-50 via-white to-slate-50 border-b border-slate-100">
+    <main className="bg-slate-50 min-h-screen overflow-hidden">
+      <div className="relative bg-gradient-to-br from-violet-50 via-white to-slate-50 border-b border-slate-100">
         <div className="pointer-events-none absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full blur-3xl bg-violet-200/35 z-10" />
         <div className="pointer-events-none absolute -bottom-20 right-0 w-80 h-80 rounded-full blur-3xl bg-violet-100/50 z-10" />
 
