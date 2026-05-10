@@ -1,6 +1,7 @@
 import "./../styles/globals.css";
 import { Outfit } from "next/font/google";
 import Header from "@/components/header/Header";
+import Footer from "@/components/footer/Footer";
 import ClientProvider from "./ClientProvider";
 import { defaultMetadata, SITE_NAME, SITE_URL, AUTHOR_NAME } from "@/lib/seo";
 
@@ -118,6 +119,7 @@ export default function RootLayout({ children }) {
         <ClientProvider>
           <Header />
           {children}
+          <Footer />
         </ClientProvider>
       </body>
     </html>
