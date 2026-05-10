@@ -21,7 +21,7 @@ export const defaultMetadata = {
     siteName: SITE_NAME,
     images: [
       {
-        url: "/profile.png",
+        url: "/main.png",
         width: 800,
         height: 800,
         alt: "Diyetisyen Gizem Akbulut Öztürk",
@@ -32,13 +32,13 @@ export const defaultMetadata = {
     card: "summary_large_image",
     site: "@dyt.gizemakbulut",
     creator: "@dyt.gizemakbulut",
-    images: ["/profile.png"],
+    images: ["/main.png"],
   },
 };
 
 export function buildMeta({ title, description, path = "", ogImage } = {}) {
   const url = `${SITE_URL}${path}`;
-  const image = ogImage ?? "/profile.png";
+  const image = ogImage ?? "/main.png";
 
   return {
     title,

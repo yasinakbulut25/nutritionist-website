@@ -59,7 +59,7 @@ const organizationSchema = {
   name: SITE_NAME,
   url: SITE_URL,
   logo: `${SITE_URL}/logo.png`,
-  image: `${SITE_URL}/profile.png`,
+  image: `${SITE_URL}/main.png`,
   description:
     "Kişiye özel online diyet danışmanlığı ve beslenme programları. Diyetisyen Gizem Akbulut Öztürk.",
   founder: {

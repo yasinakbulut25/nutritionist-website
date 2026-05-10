@@ -82,7 +82,7 @@ export default async function BlogDetailPage({ params }) {
       .replace(/\s+/g, " ")
       .trim()
       .slice(0, 155),
-    image: blog.resim ? `${BASE_URL}${blog.resim}` : `${SITE_URL}/profile.png`,
+    image: blog.resim ? `${BASE_URL}${blog.resim}` : `${SITE_URL}/main.png`,
     datePublished: blog.tarih,
     dateModified: blog.tarih,
     author: {

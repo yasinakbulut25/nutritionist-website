@@ -34,7 +34,7 @@ const personSchema = {
   name: AUTHOR_NAME,
   jobTitle: "Diyetisyen",
   url: `${SITE_URL}/hakkimda`,
-  image: `${SITE_URL}/profile.png`,
+  image: `${SITE_URL}/main.png`,
   alumniOf: {
     "@type": "CollegeOrUniversity",
     name: "Ondokuz Mayıs Üniversitesi",
