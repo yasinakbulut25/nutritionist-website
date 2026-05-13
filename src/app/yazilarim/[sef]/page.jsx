@@ -3,8 +3,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, Calendar, User, Eye, Tag } from "lucide-react";
 import SafeHtml from "@/components/SafeHtml";
 import { BlogService } from "@/services/blogs.service";
-import { BASE_URL } from "@/utils/constants";
-import { buildMeta, SITE_NAME, SITE_URL, AUTHOR_NAME } from "@/lib/seo";
+import { resolveBlogImageUrl, SITE_NAME, SITE_URL, AUTHOR_NAME } from "@/lib/seo";
 import BlogImage from "@/components/BlogImage";
 import Container from "@/components/Container";
 import BlogSidebar from "@/components/blogs/BlogSidebar";
@@ -19,31 +18,39 @@ export async function generateMetadata({ params }) {
       .replace(/\s+/g, " ")
       .trim()
       .slice(0, 155);
-    const ogImage = blog.resim ? `${BASE_URL}${blog.resim}` : undefined;
+    const ogImage = await resolveBlogImageUrl(blog.resim);
+    const pageUrl = `${SITE_URL}/yazilarim/${sef}`;
+    const title = `${blog.baslik} | ${SITE_NAME}`;
+    const ogImageEntry = ogImage
+      ? [{ url: ogImage, width: 1200, height: 630, alt: blog.baslik }]
+      : undefined;
+
     return {
-      ...buildMeta({
-        title: `${blog.baslik} | ${SITE_NAME}`,
-        description: desc,
-        path: `/yazilarim/${sef}`,
-        ogImage,
-      }),
-      keywords: [
-        blog.baslik,
-        blog.kategori_adi,
-        "beslenme",
-        "diyet",
-        AUTHOR_NAME,
-      ],
+      title,
+      description: desc,
+      keywords: [blog.baslik, blog.kategori_adi, "beslenme", "diyet", AUTHOR_NAME],
+      alternates: { canonical: pageUrl },
       openGraph: {
         type: "article",
+        locale: "tr_TR",
+        siteName: SITE_NAME,
         title: blog.baslik,
         description: desc,
-        url: `${SITE_URL}/yazilarim/${sef}`,
-        images: ogImage ? [{ url: ogImage, alt: blog.baslik }] : undefined,
+        url: pageUrl,
+        images: ogImageEntry,
         publishedTime: blog.tarih,
+        modifiedTime: blog.tarih,
         authors: [AUTHOR_NAME],
         section: blog.kategori_adi,
         tags: [blog.kategori_adi, "beslenme", "diyet"],
+      },
+      twitter: {
+        card: "summary_large_image",
+        site: "@dyt.gizemakbulut",
+        creator: "@dyt.gizemakbulut",
+        title: blog.baslik,
+        description: desc,
+        images: ogImage ? [ogImage] : undefined,
       },
     };
   } catch {
@@ -72,6 +79,8 @@ export default async function BlogDetailPage({ params }) {
 
   const { blog, recentBlogs, popularBlogs, prev, next } = data;
 
+  const resolvedImage = await resolveBlogImageUrl(blog.resim);
+
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -82,7 +91,7 @@ export default async function BlogDetailPage({ params }) {
       .replace(/\s+/g, " ")
       .trim()
       .slice(0, 155),
-    image: blog.resim ? `${BASE_URL}${blog.resim}` : `${SITE_URL}/main.png`,
+    image: resolvedImage ?? `${SITE_URL}/main.png`,
     datePublished: blog.tarih,
     dateModified: blog.tarih,
     author: {

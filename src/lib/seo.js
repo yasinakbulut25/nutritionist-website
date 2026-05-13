@@ -53,3 +53,15 @@ export function buildMeta({ title, description, path = "", ogImage } = {}) {
     twitter: { title, description, images: [image] },
   };
 }
+
+export async function resolveBlogImageUrl(resim) {
+  if (!resim) return null;
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+  const IMAGES_BASE_URL = process.env.NEXT_PUBLIC_IMAGES_BASE_URL;
+  const primary = `${BASE_URL}${resim}`;
+  try {
+    const res = await fetch(primary, { method: "HEAD", signal: AbortSignal.timeout(3000) });
+    if (res.ok) return primary;
+  } catch {}
+  return `${IMAGES_BASE_URL}${resim}`;
+}
