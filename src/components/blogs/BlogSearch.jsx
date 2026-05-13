@@ -1,10 +1,9 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Search, X, Loader2 } from "lucide-react";
-import { BASE_URL } from "@/utils/constants";
+import BlogImage from "@/components/BlogImage";
 
 export default function BlogSearch() {
   const [query, setQuery] = useState("");
@@ -104,8 +103,8 @@ export default function BlogSearch() {
                     className="flex items-center gap-3 px-3 py-2.5 hover:bg-violet-50 transition-colors group"
                   >
                     <div className="relative flex-shrink-0 w-10 h-10 rounded-lg overflow-hidden bg-slate-100">
-                      <Image
-                        src={`${BASE_URL}${post.resim}`}
+                      <BlogImage
+                        resim={post.resim}
                         alt={post.baslik}
                         fill
                         className="object-cover"

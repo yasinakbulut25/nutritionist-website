@@ -1,7 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { BASE_URL } from "@/utils/constants";
+import BlogImage from "@/components/BlogImage";
 
 function NavCard({ post, direction }) {
   const isPrev = direction === "prev";
@@ -12,8 +11,8 @@ function NavCard({ post, direction }) {
       className="group relative flex items-center gap-4 bg-white rounded-2xl border border-slate-100 p-4 overflow-hidden hover:border-violet-200 hover:shadow-lg transition-all duration-300 flex-1 min-w-0"
     >
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <Image
-          src={`${BASE_URL}${post.resim}`}
+        <BlogImage
+          resim={post.resim}
           alt=""
           fill
           className="object-cover blur-2xl scale-110 opacity-10"
@@ -25,8 +24,8 @@ function NavCard({ post, direction }) {
           isPrev ? "order-first" : "order-last"
         }`}
       >
-        <Image
-          src={`${BASE_URL}${post.resim}`}
+        <BlogImage
+          resim={post.resim}
           alt={post.baslik}
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-500"

@@ -1,7 +1,6 @@
-import { BASE_URL } from "@/utils/constants";
 import { ArrowRight } from "lucide-react";
 import SafeHtml from "@/components/SafeHtml";
-import Image from "next/image";
+import BlogImage from "@/components/BlogImage";
 import Link from "next/link";
 
 function BlogCard({ post }) {
@@ -11,8 +10,8 @@ function BlogCard({ post }) {
         href={`/yazilarim/${post.sef}`}
         className="block relative overflow-hidden aspect-[16/10]"
       >
-        <Image
-          src={`${BASE_URL}${post.resim}`}
+        <BlogImage
+          resim={post.resim}
           alt={post.baslik}
           fill
           className="object-cover group-hover:scale-110 transition-transform duration-500"

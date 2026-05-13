@@ -1,11 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, BookOpen, Eye } from "lucide-react";
 import SafeHtml from "@/components/SafeHtml";
 import { BlogService } from "@/services/blogs.service";
-import { BASE_URL } from "@/utils/constants";
 import { buildMeta, SITE_NAME } from "@/lib/seo";
+import BlogImage from "@/components/BlogImage";
 import Container from "@/components/Container";
 import BlogSidebar from "@/components/blogs/BlogSidebar";
 import BlogSearch from "@/components/blogs/BlogSearch";
@@ -116,8 +115,8 @@ export default async function KategoriPage({ params }) {
                       href={`/yazilarim/${post.sef}`}
                       className="block relative overflow-hidden aspect-[16/10]"
                     >
-                      <Image
-                        src={`${BASE_URL}${post.resim}`}
+                      <BlogImage
+                        resim={post.resim}
                         alt={post.baslik}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-500"

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Calendar, User, Eye, Tag } from "lucide-react";
@@ -6,6 +5,7 @@ import SafeHtml from "@/components/SafeHtml";
 import { BlogService } from "@/services/blogs.service";
 import { BASE_URL } from "@/utils/constants";
 import { buildMeta, SITE_NAME, SITE_URL, AUTHOR_NAME } from "@/lib/seo";
+import BlogImage from "@/components/BlogImage";
 import Container from "@/components/Container";
 import BlogSidebar from "@/components/blogs/BlogSidebar";
 import BlogNavCards from "@/components/blogs/BlogNavCards";
@@ -127,8 +127,8 @@ export default async function BlogDetailPage({ params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <div className="relative w-full h-72 md:h-[350px] lg:h-[450px] bg-slate-200 overflow-hidden">
-        <Image
-          src={`${BASE_URL}${blog.resim}`}
+        <BlogImage
+          resim={blog.resim}
           alt={blog.baslik}
           fill
           className="object-cover"

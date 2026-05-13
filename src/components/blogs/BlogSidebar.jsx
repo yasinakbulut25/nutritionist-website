@@ -1,8 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Clock, TrendingUp } from "lucide-react";
-import { BASE_URL } from "@/utils/constants";
 import BlogSearch from "./BlogSearch";
+import BlogImage from "@/components/BlogImage";
 
 function SidebarBlogItem({ post, rank }) {
   return (
@@ -11,8 +10,8 @@ function SidebarBlogItem({ post, rank }) {
       className="flex items-start gap-3 group py-3 border-b border-slate-100 last:border-0"
     >
       <div className="relative flex-shrink-0 w-16 h-16 rounded-xl overflow-hidden bg-slate-100">
-        <Image
-          src={`${BASE_URL}${post.resim}`}
+        <BlogImage
+          resim={post.resim}
           alt={post.baslik}
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-300"
