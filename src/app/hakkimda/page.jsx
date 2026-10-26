@@ -94,7 +94,7 @@ function parseCertificates(html) {
 export default async function HakkimdaPage() {
   const { bio, sertifikalar } = await HakkimdaService.getAll();
 
-  const certificates = parseCertificates(sertifikalar.icerik);
+  const certificates = sertifikalar ? parseCertificates(sertifikalar.icerik) : [];
 
   return (
     <main className="bg-slate-50 min-h-screen">
@@ -169,44 +169,48 @@ export default async function HakkimdaPage() {
         </div>
       </Container>
 
-      <Container className="xl:!px-4 !px-0">
-        <div className="bg-white xl:rounded-2xl border border-slate-100 shadow-sm sm:p-8 md:p-12 py-6 px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
-            <span className="bg-gradient-to-br from-violet-700 via-violet-400 to-violet-700 bg-clip-text text-transparent">
-              {bio.baslik}
-            </span>
-          </h2>
-          <SafeHtml
-            html={bio.icerik}
-            className="hakkimda-bio text-slate-600 text-base md:text-lg leading-relaxed [&_h2]:text-slate-800 [&_h2]:font-semibold [&_h2]:text-xl [&_h2]:mt-6 [&_p]:mb-4"
-          />
-        </div>
-      </Container>
+      {bio && (
+        <Container className="xl:!px-4 !px-0">
+          <div className="bg-white xl:rounded-2xl border border-slate-100 shadow-sm sm:p-8 md:p-12 py-6 px-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+              <span className="bg-gradient-to-br from-violet-700 via-violet-400 to-violet-700 bg-clip-text text-transparent">
+                {bio.baslik}
+              </span>
+            </h2>
+            <SafeHtml
+              html={bio.icerik}
+              className="hakkimda-bio text-slate-600 text-base md:text-lg leading-relaxed [&_h2]:text-slate-800 [&_h2]:font-semibold [&_h2]:text-xl [&_h2]:mt-6 [&_p]:mb-4"
+            />
+          </div>
+        </Container>
+      )}
 
-      <Container className="!pt-0 xl:!px-4 !px-0">
-        <div className="bg-white xl:rounded-2xl border border-slate-100 shadow-sm sm:p-8 md:p-12 py-6 px-4">
-          <h2 className="text-2xl md:text-3xl font-bold mb-8">
-            <span className="bg-gradient-to-br from-violet-700 via-violet-400 to-violet-700 bg-clip-text text-transparent">
-              {sertifikalar.baslik}
-            </span>
-          </h2>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {certificates.map((cert, i) => (
-              <li
-                key={i}
-                className="flex items-center gap-3 p-4 rounded-xl bg-violet-50/60 border border-violet-100 hover:bg-violet-50 hover:border-violet-200 transition-colors duration-150"
-              >
-                <span className="text-base mt-0.5 flex-shrink-0">
-                  <Award className="text-indigo-500" width={24} height={24} />
-                </span>
-                <span className="text-base text-slate-700 font-medium leading-snug">
-                  {cert.replace(/^📑\s*/, "")}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </Container>
+      {sertifikalar && (
+        <Container className="!pt-0 xl:!px-4 !px-0">
+          <div className="bg-white xl:rounded-2xl border border-slate-100 shadow-sm sm:p-8 md:p-12 py-6 px-4">
+            <h2 className="text-2xl md:text-3xl font-bold mb-8">
+              <span className="bg-gradient-to-br from-violet-700 via-violet-400 to-violet-700 bg-clip-text text-transparent">
+                {sertifikalar.baslik}
+              </span>
+            </h2>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {certificates.map((cert, i) => (
+                <li
+                  key={i}
+                  className="flex items-center gap-3 p-4 rounded-xl bg-violet-50/60 border border-violet-100 hover:bg-violet-50 hover:border-violet-200 transition-colors duration-150"
+                >
+                  <span className="text-base mt-0.5 flex-shrink-0">
+                    <Award className="text-indigo-500" width={24} height={24} />
+                  </span>
+                  <span className="text-base text-slate-700 font-medium leading-snug">
+                    {cert.replace(/^📑\s*/, "")}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Container>
+      )}
     </main>
   );
 }
